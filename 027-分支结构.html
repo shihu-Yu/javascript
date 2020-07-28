@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>027-分支结构.html</title>
+</head>
+<body>
+	<div class="btn">
+		<input type="button" name="显示隐藏" id="btn" value="隐藏显示">
+	</div>
+	<div class="wrap" id="wrap">
+		需要隐藏的内容
+	</div>
+</body>
+<script type="text/javascript">
+	//获取元素，
+	var wrap =document.getElementById("wrap");
+	var btn = document.getElementById("btn");
+	//绑定事件；
+	btn.onclick = function(){
+		if (wrap.style.display == 'none') {
+			wrap.style.display = 'block'
+		}else{
+			wrap.style.display = 'none'
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>003-写在外部的单独文件中.html</title>
+	<script src="./003-写在外部的单独文件中" ></script>
+	<!--
+	把JS写在一个外部文件里面,这个外部文件用.js作为扩展名,在需要使用的页面通过script标签的src属性引用即可
+	举例:
+	<script src="test.js"></script>
+	说明
+	传统的做法是把script标签写在head标签里面，但由于浏览器是从上向下解析代码的,所以如果在js中需要操作页面中的元素,常见的做法是把script标签写在body标签后或者把相关代码写在window.onload函数中
+	script标签中的type属性可以不用写, 默认就是type="text/javascript"
+	每次加载外部的js文件都会发送一次请求, 这样非常消耗性能, 所以在企业开发中推荐将多个JS文件合成为一个JS文件,以提升网页的性能和加载速度
+	script代码块中不能编写js代码, 即便写了也不会执行
+	-->
+</head>
+<body>
+	<div>我是你的眼</div>
+</body>
+</html>

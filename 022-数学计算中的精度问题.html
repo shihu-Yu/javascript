@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>022-数学计算中的精度问题.html</title>
+</head>
+<body>
+<script type="text/javascript">
+	console.log(0.1 + 0.2);
+	console.log(0.100000000000000002 === 0.1);
+	console.log((0.1 + 0.2).toFixed(10));
+	console.log(parseFloat(0.1 + 0.2).toFixed(10));
+</script>;
+</body>
+</html>

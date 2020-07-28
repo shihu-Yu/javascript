@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>035-判断质数.html</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	var num = 61;
+	var flag = true;
+	for(var i =2;i < num/2;i++){
+		if (num % i ==0) {
+			flag = false;
+			break;
+		}
+	}
+	if(flag){
+		console.log(num+ '是一个质数')
+	}else{
+		console.log(num +'这不是一个质数，因为它能被' + i +'整除')
+	}
+</script>
+</html>

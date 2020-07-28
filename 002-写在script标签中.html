@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>002-写在script标签中.html</title>
+	<!--
+	<script type="text/javascript">
+		alert('hello')
+	</script>
+	-->
+</head>
+<body>
+	<div>写在script标签中</div>
+</body>
+	<script type="text/javascript">
+		alert("hello")	
+	//传统的做法是把script标签写在head标签里面，但由于浏览器是从上向下解析代码的,所以如果在js中需要操作页面中的元素,常见的做法是把script标签写在body标签后或者把相关代码写在window.onload函数中
+	//script标签中的type属性可以不用写, 默认就是type="text/javascript"
+	//该方法的缺点是只适用于当前页面
+	</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>016-转换规则.html</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	/*parseInt() 和 parseFloat() 函数的转换规则*/
+	//var a = '12346';parseInt用来转换整数,parseFloat可以转换整数和小数
+	//var a = '      4567'；忽略字符串前面的空格
+	//var a = 'a123456';如果第一个字符不是数字或者负号加数字,会返回NaN(Not a Number)
+	//var a = '741852a369';从左到右解析直到第一个非数字为止
+	//a = parseFloat(a);
+
+	//Number()函数的转换规则
+	//var a ='5566446444644';//如果是纯数字的字符串，则直接将其转换为数字
+	//var a ='55a';//如果字符串中有非数字内容，则会转换为NaN
+	//var a = '     '//如果字符串是一个空串或者是一个全是空格的字符串，则转换为0
+	//var a = Number(false);//true 转成 1,false 转成 0
+	var a = Number(null);//null 转成0
+	var a = Number(undefined);//undefined转成NaN
+	console.log(a);
+</script>
+</html>

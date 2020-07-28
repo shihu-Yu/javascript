@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>018-转字符串.html</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	var num = 123;
+	//str = num.toString();
+	console.log(num.toString(16) + 4);
+	/*null和undefined这两个值没有toString()方法，如果调用他们的方法，会报错
+	该方法不会影响到原变量，它会将转换的结果返回
+	数值类型的toString()，可以携带一个参数，输出对应进制的值*/
+
+
+	//*String()函数,将被转换的数据传入String()函数中
+	var str = 567;
+	console.log(String(str));
+	var sna = undefined;
+	console.log(String(sna));
+	/*
+	说明
+	有些值没有toString()，这个时候可以使用String()函数。比如：undefined和null
+	对于Number和Boolean实际上就是调用的toString()方法
+	对于null和undefined，就不会调用toString()方法.而是在内部生成一个新的字符串
+	*/
+</script>
+</html>

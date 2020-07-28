@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>041-函数的不定参数.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/* 每一个函数都有一个参数数组，数组的名字是arguements  参数数组中的值由调用时传递，按照传递参数的顺序存储在数组之中*/
+	function sum(){
+		var total = 0
+		for(var i=0,len=arguments.length; i < len ; i++){
+		total += arguments[i]
+	}
+	console.log(total)
+}
+	sum(5,6,5,6,5,6,100000)
+</script>
+</html>

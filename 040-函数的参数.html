@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>040-函数的参数.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function obj(name,age,sex){//定义时的参数叫做形参
+		console.log('hi,'+name+ '今年'+age+'岁了'+ '是一个' +sex)
+	}
+	obj('lilei',18,'男生')//调用时赋的值叫做实参
+	//函数调用时给参数赋值的规则: 按照定义时参数的顺序来一一对应赋值的。 lilei ,18,男生和name age sex 依次对应赋值
+
+	obj()/*参数根据函数的功能来确定，也可以没有，一般遵循的规律是函数中经常变的部分用参数来代替
+	此时的输出结果为： hi,undefined今年undefined岁了是一个undefined；
+	*/
+
+
+	//JS中所有函数的参数都是按值传递的,也就是说把函数外部的值复制给函数内部的参数,就和把值从一个变量复制到另外一个变量一样,基本类型复制的具体的值，引用类型复制的是地址
+	var b = 'tom'
+	var c =19
+	var d ='nvsheng'
+	obj(b,c,d)//此时是把b,c,d的值直接传递给了name age sex，相当于后者直接复制了前者的值
+
+
+</script>
+</html>

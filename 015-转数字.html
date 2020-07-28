@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>015-转数字.html</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	var n1 = prompt("请输入内容:");
+	var n2 = prompt("请输入内容:");
+	//只能用来转换整数，不能转换小数
+ 	/*
+ 	n1 = parseInt(n1);
+ 	n2 = parseInt(n2);
+ 	*/
+ 	//n1 = parseFloat(n1);
+ 	//n2 = parseFloat(n2);
+ 	//parseFloat可以转换整数和小数
+	//var sum = n1 + n2;
+
+	//方法二: Number()函数，将被转换的数据传入Number()函数中
+	 n1 = Number(n1);
+	n2 = Number(n2);
+	var sum = n1 + n2;
+	alert(sum);
+</script>
+</html>

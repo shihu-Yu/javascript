@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>039-函数声明和函数表达式的区别.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*区别
+	函数声明定义的函数，解析器会做函数声明的提升，函数声明的提升是指在代码开始执行前，解析器会把所有用函数声明定义的函数放到代码的顶部
+	*/
+	abc()
+	function abc(){
+		console.log('hello world')
+	}
+	//abc()
+
+
+	//函数表达式定义的函数没有函数声明的提升,只有变量声明提升
+	//abb()//无法输出xixixi
+
+
+	//console.log(abb)//声明变量的提升，会输出underfined
+	var abb= function(){
+		console.log('xixixi')
+	}
+	abb()
+</script>
+</html>

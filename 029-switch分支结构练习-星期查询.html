@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>029-switch分支结构练习-星期查询.html</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	/*
+	case判断是否相等时是全等于(===),而不是等于(==),也就是说既会判断类型是否相等又会判断值是否相等
+
+	每一个case语句后面需要添加break语句来跳出当前switch语句
+
+	default后的语句是当前面所有的条件都不满足时执行
+
+	case后可以是字面量也可以是变量
+	*/
+	var week = prompt('请输入数字星期');
+	 week = parseInt(week);
+	switch(week){
+		case 1:
+			alert('今天是周一');
+			break;
+		case 2:
+			alert('今天是周二');
+			break;
+		case 3:
+			alert('今天是周三');
+			break;
+		case 4:
+			alert('今天是周四');
+			break;
+		case 5:
+			alert('今天是周五');
+			break;
+		case 6:
+			alert('今天是周六');
+			break;
+		case 7:
+			alert('今天是周日');
+			break;
+		default:
+            alert('您输入的不是一个合法的星期') 
+	}
+</script>
+</html>
