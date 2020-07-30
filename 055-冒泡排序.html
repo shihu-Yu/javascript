@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>055-冒泡排序.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//排序 升序
+	var arr = [6,3,1,8,6,8,52,61,42]
+	//var arr = [6,4,8,3]
+	//第一轮 [4，6，3，8] 总共比较三次  首先6和4比较小的在前，因此6和4 交换位置 交换之后6和8比较，在之后8和3比较
+	//第二轮 [4,3,6,8]总共比较两次 因为之前已经确定最大的8在最后面，因此不用比较最后一位
+	//第三轮 [3,4,6,8]与上同理
+		for(var i = 0,len = arr.length;i < len-1;i++){
+			for (var j = 0;j < len - 1 -i;j++){
+				if(arr[j] > arr[j+1]){
+					var temp = arr[j+1]
+					arr [j+1] = arr [j]
+					arr[j] = temp
+				}
+			}
+		}
+		console.log(arr);
+</script>
+</html>

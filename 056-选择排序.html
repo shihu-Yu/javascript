@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>056-选择排序.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var arr = [6,4,8,3]
+	var len = arr.length
+	var minIndex , temp
+	for(i =0 ;i < len-1;i++){
+		minIndex = i //设置最小数的下标
+		for(var j = i+1; j < len;j++){
+			if(arr[j] < arr[minIndex]){
+				minIndex = j
+			}
+		}
+		temp = arr[i];
+		arr[i] = arr[minIndex];
+		arr[minIndex] = temp;
+	}
+	console.log(arr)
+</script>
+</html>
