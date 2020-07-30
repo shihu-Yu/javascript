@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>047-作用域的决定.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//函数执行时依赖于变量的作用域,这个作用域是在定义的时候决定的,而不时在调用的时候决定
+	var a = 1
+	function fn(){
+		var a = 2
+		console.log('fn: a:'+a)//此时函数调用时a的结果为2
+		//return a
+	}
+	fn()
+	console.log(fn())
+	console.log('a:'+a)//此时a的输出结果为1
+	
+
+	/*
+	var a = 1;
+	function fn(){
+	    console.log(a);//定义时a的值时1
+	}
+	function show(){
+	    var a = 2;
+	    fn();//执行时a的值是2
+	}
+	show();//show中的fn执行时a的值是2,fn在定义时a的值是1,所以结果是1
+	*/
+</script>
+</html>

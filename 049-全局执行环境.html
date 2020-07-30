@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>049-全局执行环境.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	console.log(window)
+	console.log(this)
+	console.log(username)
+	console.log(age)
+	console.log(getPerson)
+
+	var username = 'tom'
+	var age = 18
+	function getPerson(){
+		var city ='bj'
+		function sayHai(){
+			console.log('hello')
+		}
+		return {
+			username:name,
+			age:age ,
+			city:city
+		}
+	}
+</script>
+</html>

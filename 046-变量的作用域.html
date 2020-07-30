@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>046-变量的作用域.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var a = 5 //全局变量 定义在所有函数外面,所有的函数都可以使用的变量
+	function fn(){
+		var b =10
+		console.log('fn::'+a)
+		var a = 99//这个a对a 夫值因此在其下局部中的输出结果a 都为99
+		console.log(b)//b是局部变量定义在函数内部，只能在函数内部或者函数的子函数中使用
+
+		//console.log(c)//c是局部变量 为子函数的变量父元素无法获取因此会报错
+
+		function fn1(){
+			console.log(c)//输出结果为undefined 只是var = c 这个声明被提前而没有被复制
+			var c = 20
+			console.log(c)
+			console.log('fn1::'+b)
+			console.log(a)
+		}
+		fn1()
+	}
+	fn()
+	console.log(a)
+	//console.log(b) b是局部变量定义在函数内部，只能在函数内部或者函数的子函数中使用
+</script>
+</html>

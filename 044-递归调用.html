@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>044-递归调用</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function fact(n){
+		if (n==1) {
+			return 1;
+		}else{
+			//return n*fact(n-1);
+			return n * arguments.callee(n-1)
+		}
+	}
+	console.log(fact(5))
+
+	var num =fact
+	fact = null//递归调用中如果用了函数名,一旦递归调用的原本函数发生改变,那么它之前的副本在调用时将会找不到该函数而报错,所以递归调用中的函数推荐使用arguments.callee来代替，上述后的代码如下:
+	console.log(num(6))
+</script>
+</html>

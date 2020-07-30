@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>050-局部执行环境.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var a = 1
+	var b = 2
+	function fn1(){
+		var b = 3
+		console.log(a)//这里a的输出值应为1 在fn1这个局部执行环境中没有定义 a 因此向上一个执行环境之中寻找 a
+		console.log(b)//b的输出是3，在fn1的局部执行环境中b被定义，因此执行阶段会输出b 的值3
+
+		function fn11(){
+			console.log('fn11 a:'+a)//fn11的局部执行环境中没有定义a 因此 a的值向  fn1 的执行环境之中寻找
+			console.log('fn11 b:'+b)//b 的值与上面的同理,只不过是在全局执行环境之中寻找
+
+			function fn111(){
+				var a = 5
+				var c = 10
+				console.log('fn111 s:'+a)//a 的输出值为5 在fn111的执行环境中a 的值被声明定义因此a的值就在这个执行环境之中寻找
+				console.log('fn111 b:'+b)//fn111的局部执行环境中没有定义b 因此 b的值向 全局执行环境 之中寻找
+				console.log('fn11 c:'+c) // c的值为10  c的值与a同理
+			}
+			fn111()
+		}
+		fn11()
+	}
+	fn1()
+</script>
+</html>

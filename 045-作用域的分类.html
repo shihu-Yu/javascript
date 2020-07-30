@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>045-作用域的分类.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//ES5之前,JS没有块级作用域,只有函数作用域。
+	//函数作用域  在函数内部声明的变量在函数内部以及子函数中都可以使用,出了函数不可用
+
+	function fn(){
+		var a =10
+		console.log(a)
+		function fn1(){
+			console.log(a)
+		}
+		fn1()//函数必须经过调用才能输出结果
+	}
+	fn()
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>042-函数的返回值.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//将函数体内通过return把函数的执行结果返回  函数的返回值是在调用的时候获取的
+	function sum(n1,n2){
+		var total =n1+n2
+		//console.log(total)
+		return total//n2,n1 一个函数只能有一个返回值，如果有多个只取最后一个返回值（这是错误的写法）
+		//return  没有返回值或者只有return的函数返回值是undefind
+
+		//console.log(total)  return后面的代码不会在执行了
+	}
+	var xxx =sum(3,1)
+	console.log(xxx)
+	console.log(sum(9,1))
+</script>
+</html>

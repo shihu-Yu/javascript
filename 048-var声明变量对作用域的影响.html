@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>048-var声明变量对作用域的影响.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var a =3
+	function str(){
+		var a = 4 //此时下面的输出结果a为4 ，
+		console.log(a)//当var a = 4定义在输出结果后面是，输出结果为undedined，此时只有var a;声明提前，并没有被赋值
+		var a = 4
+		//var b = 5//此时下面输出b 的结果会被报错此时的b只是局部变量只在函数内部生效
+		b = 6//这时下面b的输出结果为6，此时b=3没有被var声明，是一个全局属性，因此会被下面的b输出
+	}
+	str()
+	console.log(a)//
+	console.log(b)
+</script>
+</html>

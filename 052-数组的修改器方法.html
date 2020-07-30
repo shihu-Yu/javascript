@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>052-数组的修改器方法.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//下面的这些方法会改变调用它们的数组自身的值
+	var a = [1,2,3,4,5]
+	//a.push(7)
+	//console.log(a.push(7)) //push()在数组末尾添加元素   输出的返回结果是添加元素之后数组的长度，此时结果为6
+
+	//a.unshift(0)
+	//console.log(a.unshift(0))  //在数组头部添加元素   输出的返回结果是添加元素之后数组的长度  此时结果为6
+
+	//a.pop()  删除数组的末尾元素
+	//console.log(a.pop()) //输出结果为返回删除的元素 此时为 5
+	//a.shift() //删除数组的第一个元素
+	//console.log(a.shift()) //输出结果为删除的数组第一个元素  此时为1
+
+	//a.splice(0,2)//  删除   splice(起始下标,删除个数)
+	//console.log(a.splice(0,2))//删除内容组成的新数组 此时为[1,2]
+	//a.splice(0,0,22)  //插入splice(起始下标,0,插入值1,插入值2...)
+	//console.log(a.splice(0,0,22)) //删除内容组成的新数组 此时为[]
+
+	//a.splice(0,2,22,33)  替换splice(起始下标,删除个数,插入值1,插入值2...)
+	//console.log(a.splice(0,2,22,33))//删除内容组成的新数组
+
+	//a.reverse()//	反转数组的顺序
+	//console.log(a.reverse())  //反转后的原数组
+	console.log(a)
+</script>
+</html>

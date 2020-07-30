@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>051-定义数组的方法.html</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//通过Array 构造函数
+	/*
+	var arr = new Array(1,2,3,4,5)
+	console.log(arr)
+	*/
+
+	//通过数组字面量[]
+	/*
+	var num =[1,2,3,4,5,'zs','ls','ww',null] //数组中可以存放不同类型的数据
+	console.log(num)
+	console.log(num.length)   //通过数组的length属性来获取到数组的长度
+	console.log(num[0])   //此时的输出结果为1，通过下标来访问数组中的元素，数组的下标是从0开始的，也就是此时1的下标是0，‘zs’的下标是5，数组的最后一个元素的下标是length-1,如果超出长度的输出结果为undefined
+	num[5] = 6   //可以通过此方式改变数组元素中的值
+	console.log(num[5])  //因此此时的输出结果为6
+	num.length = 5  //可以改变数组的length属性,改变后的值是数组的实际长度,可以通过这种方法清空数组  此时数组的长度为5
+	console.log(num)
+	*/
+	var num = [1,2,3,[11,22,[111,222,333]]]//数组是可以嵌套的， 通过数组的嵌套可以创建多维数组
+	console.log(num)
+	console.log(num[1])//输出结果是2
+	console.log(num[3][1])  //输出结果是22
+	console.log(num[3][2][1])  //输出结果为222 [3]代表的是数组[11,22]的下标    [2]  代表的是数组[111,222,333]的下标   [1]代表的是222的下标
+</script>
+</html>
