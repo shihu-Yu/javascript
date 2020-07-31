@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>069-样式相关的属性操作-获取样式.html</title>
+	<style type="text/css">
+		div{
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box" style="color:green;">nihao</div>
+</body>
+<script type="text/javascript">
+	var box = document.getElementById('box')
+	// 元素.style.属性名称  方法
+	//console.log(box.style.color)
+	//console.log(box.style.fontSize)//这中方法无法获取内部形式中的属性，只能获取行内形式中的属性
+
+	//元素.style['属性名称']   方法
+	console.log(box.style['font-size'])
+</script>
+</html>

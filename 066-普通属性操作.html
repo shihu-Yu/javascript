@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>066-普通属性操作.html</title>
+</head>
+<body>
+	<input type="text" name="username" id="username" value="bob"  myattr="zidingyi">
+</body>
+<script type="text/javascript">
+	var elem = document.getElementById('username')
+	console.log(elem)
+	//获取属性的值 元素.getAttribute(名称)
+	console.log(elem.getAttribute('type'))
+	console.log(elem.getAttribute('name'))
+	console.log(elem.getAttribute('id'))
+	console.log(elem.getAttribute('value'))
+	console.log(elem.getAttribute('myattr'))
+
+	//元素.属性名称
+	console.log(elem.value)
+	console.log(elem.myattr)//元素.属性名称 这种方法不能获取自定义的属性
+</script>
+</html>
