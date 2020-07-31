@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>062-获取子节点.html</title>
+</head>
+<body>
+	<div id="father">
+		<div id="son1">son1</div>
+		<div id="son2">son2</div>
+		<div id="son3">son3</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var father = document.getElementById('father')
+	//console.log(father.childNodes)//返回一个数组,包含元素(父节点)中的所有文本节点和元素节点
+	//console.log(father.children)//返回一个数组, 包含父元素(父节点)中的所有元素节点
+	//console.log(father.firstChild)//在此为  #text  文本节点
+	//console.log(father.lastChild)//同上
+	console.log(father.firstElementChild)//分别指向元素(父节点)的children中的第一个元素节点 在此为<div id="son1">son1</div>
+	console.log(father.lastElementChild)//指向最后一个元素节点  在此为<div id="son3">son3</div>
+</script>
+</html>

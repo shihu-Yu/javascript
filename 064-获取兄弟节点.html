@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>064-获取兄弟节点.html</title>
+</head>
+<body>
+	<div id="son1">son1</div>
+	<div id="son2">son2</div>
+	<div id="son3">son3</div>
+</body>
+<script type="text/javascript">
+	var son2 = document.getElementById('son2')
+	//元素.nextSibling/元素.previousSibling, 元素的下一个/上一个文本节点或者元素节点
+	//console.log(son2.nextSibling)//上个问本节点或者㢝节点 此时显得时 #text
+	//console.log(son2.previousSibling)//下一个文本节点或者元素节点  此时显得时 #text
+	console.log(son2.nextElementSibling)//下一个元素节点
+	console.log(son2.previousElementSibling)//上一个元素节点
+</script>
+</html>

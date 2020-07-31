@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>061-节点类型.html</title>
+</head>
+<body>
+	<div id="box">hello</div>
+</body>
+<script type="text/javascript">
+	console.log(document.nodeType)//9 文档节点 代表了文档对象document, document是window对象的一个属性,表示整个HTML页面
+	console.log(document.getElementById('box').nodeType)//元素节点  nodeType属性的值为1,表示HTML元素
+	console.log(document.getElementById('box').firstChild.nodeType)//文本节节点 nodeType属性的值为3,包含的纯文本内容
+</script>
+</html>

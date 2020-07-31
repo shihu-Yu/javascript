@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>060-获取元素.html</title>
+</head>
+<body>
+	<div id="box1">box1</div>
+	<div id="box">box1</div>
+	<div name="box2">box2</div>
+	<div name="box2" id="box2" class="box2">
+		<p class="box21">1</p>
+		<p class="box21">2</p>
+		<p class="box21">3</p>
+	</div>
+	<div class="box3" id="box3">box3
+		<p class="box4"></p>
+	</div>
+</body>
+<script type="text/javascript">
+	//var box1 = document.getElementById('box1')
+	//console.log(box1)
+	//var box2=document.getElementsByName('box2')
+	//console.log(box2)
+
+	//var box3=document.getElementsByTagName('p')
+	//console.log(box3)
+	//var box2=document.getElementById('box2')
+	//var elemsp=box2.getElementsByTagName('p')
+	//console.log(elemsp)
+
+	//var box4 = document.getElementsByClassName('box4')
+	//console.log(box4)
+	//var box3=document.getElementById('box3')
+	//var elems=box3.getElementsByClassName('box4')
+	//console.log(elems)
+
+	//var box3 = document.querySelector('.box3') 
+	//console.log(box3)
+
+	//var box2 =document.querySelectorAll('.box2 .box21')
+	//console.log(box2)
+
+
+	// 直接获取元素
+	var box =document.documentElement
+	console.log(box)
+	var body=document.body
+	console.log(body)
+</script>
+</html>

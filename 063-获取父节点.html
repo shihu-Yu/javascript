@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>063-获取父节点.html</title>
+</head>
+<style type="text/css">
+	#son3{/*当只给子元素添加定位属性时，下面父节点输出结果显示的时  body*/
+		position: absolute;
+	}
+	#father{/*当父元素添加定位属性后 下面的输出结果显示为  father*/
+		position: relative;
+	}
+</style>
+<body>
+	<div id="father">
+		<div id="son1">son1</div>
+		<div id="son2">son2</div>
+		<div id="son3">son3</div>
+	</div>
+</body>
+<script type="text/javascript">
+	//元素.parentNode, 元素(子节点)的父节点对象
+	var son3 = document.getElementById('son3')
+	//console.log(son3.parentNode)
+	console.log(son3.offsetParent)
+</script>
+</html>
