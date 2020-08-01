@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>079-克隆节点.html</title>
+</head>
+<body>
+	<input type="button" value="克隆" id="btn">
+	<div class="wrap">
+		<div class="wrap1">
+			<p>yourbones</p>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var wrap = document.querySelectorAll('.wrap')
+	var wrap1 =document.querySelectorAll('.wrap1')
+	var btn = document.getElementById('btn')
+	btn.onclick = function(){
+		wrap.cloneNode([true])
+	}
+</script>
+</html>

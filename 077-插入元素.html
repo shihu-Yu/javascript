@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>077-插入元素和删除.html</title>
+</head>
+<body>
+	<ul id="wrap1">
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+    </ul>
+    <input type="button" value="移动" id="btn">
+</body>
+<script type="text/javascript">
+	var wrap1 = document.getElementById('wrap1')
+    var btn = document.getElementById('btn')
+    btn.onclick = function(){
+        var elem = wrap1.firstElementChild
+        //插入元素
+        //wrap1.appendChild(elem)
+
+
+        wrap1.removeChild(elem)//删除元素
+    }
+</script>
+</html>

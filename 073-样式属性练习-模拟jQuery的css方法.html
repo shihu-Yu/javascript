@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>073-样式属性练习-模拟jQuery的css方法.html</title>
+</head>
+<body>
+	<input id="btn1" type="button" value="获取样式"></input>
+	<input id="btn2" type="button" value="设置样式"></input>
+	<div id="wrap">wrap</div>
+</body>
+<script type="text/javascript">
+	var btn1 = document.getElementById('btn1')//()   内部一定要加 ''号
+	var btn2 = document.getElementById('btn2')
+	var wrap = document.getElementById('wrap')
+	function css(elem,attr,value){
+		var len = arguments.length
+		if (len ==2) {
+			return getComputedStyle(elem,false)[attr]
+		}else if(len == 3){
+			elem.style[attr]= value
+			return elem
+		}
+	}
+	btn1.onclick = function(){
+		console.log(css(wrap,'color'))
+	}
+	btn2.onclick = function(){
+		css(wrap,'color','red')
+	}
+</script>
+</html>

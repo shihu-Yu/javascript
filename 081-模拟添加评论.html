@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加评论</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            width: 600px;
+            margin: 50px auto;
+            padding: 5px;
+        }
+        .wrap .action-bar{
+        	display: flex
+        }
+        #btn{
+        	width: 50px;
+        	margin-left: 5px;
+        }
+        li{
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            line-height: 40px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .btn{
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+    	<div class="action-bar">
+    		<textarea cols="30" rows="5" id="text"></textarea>
+    		<input type="button" value="发布" id="btn">
+    	</div>
+    	<ul id="contents">
+	        <li>
+	            <span>我是内容1</span>
+	            <span class="btn">删除</span>
+	        </li>
+        </ul>                           
+    </div>
+</body>
+<script>
+	var text = document.getElementById('text')
+    var btn = document.getElementById('btn')
+    var contents = document.getElementById('contents')
+    btn.onclick = function(){
+    	var val = text.value
+    	var elemLi = document.createElement('li')
+    	var elemSpan = document.createElement('span')
+    	elemSpan.innerHTML = val
+    	elemLi.appendChild(elemSpan)
+    	contents.insertBefore(elemSpan,elemLi)
+    }
+
+</script>
+</html>

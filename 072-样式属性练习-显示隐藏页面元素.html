@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>072-样式属性练习-显示隐藏页面元素.html</title>
+</head>
+<body>
+	<input id="btn" value="隐藏显示" type="button"></input>
+	<div id="wrap">
+		大鱼的翅膀
+	</div>
+</body>
+<script type="text/javascript">
+	var btn = document.getElementById('btn')
+	var wrap = document.getElementById('wrap')
+	btn.onclick = function(){
+		if(wrap.style.display == 'none'){
+			wrap.style.display = 'block'
+		}else{
+			wrap.style.display = 'none'
+		}
+	}
+</script>
+</html>
