@@ -32,6 +32,10 @@
             cursor: pointer;
             color: red;
         }
+        .btn-del{
+        	cursor: pointer;
+        	color: red;
+        }
     </style>
 </head>
 <body>
@@ -42,8 +46,7 @@
     	</div>
     	<ul id="contents">
 	        <li>
-	            <span>我是内容1</span>
-	            <span class="btn">删除</span>
+	          
 	        </li>
         </ul>                           
     </div>
@@ -58,7 +61,16 @@
     	var elemSpan = document.createElement('span')
     	elemSpan.innerHTML = val
     	elemLi.appendChild(elemSpan)
-    	contents.insertBefore(elemSpan,elemLi)
+
+    	var delSpan = document.createElement('span')
+    	delSpan.innerHTML = '删除'
+    	delSpan.className = 'btn-del'
+    	elemLi.appendChild(delSpan)
+    	delSpan.onclick = function(){
+    		contents.removeChild(elemLi)
+    	}
+    	contents.insertBefore(elemLi,contents.firstChild)
+    	text.value = ''
     }
 
 </script>
