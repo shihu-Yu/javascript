@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>window对象打开关闭窗口.html</title>
+</head>
+<body>
+	<input type="button" id="btn" value="打开窗口">
+</body>
+<script type="text/javascript">
+	var btn = document.getElementById('btn')
+	btn.onclick = function(){//window.open(地址,打开方式);
+		//window.open('http:www.baidu.com')
+		//window.open('about:blank','_blank')
+		window.open('about:blank','_self')//在自身页面打开
+	}
+</script>
+</html>

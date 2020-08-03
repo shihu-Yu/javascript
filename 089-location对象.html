@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>location对象</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//   如何获取location对象
+	//console.log(document.location)
+	//console.log(window.location)
+	console.log(location)
+
+	//.location对象常用的属性和方法
+	/*
+	href	代表当前页面的完整url
+	host	服务器名称和端口号
+	hostname	服务器名称
+	pathname	地址中的路径部分
+	port	端口号
+	search	查询字符串,指地址中?后面的字符串
+	*/
+	//console.log(location.href)
+	//location = 'https://www.baidu.com'
+	console.log(location.href)
+	console.log(location.host)
+	console.log(location.hostname)
+	console.log(location.pathname)
+	console.log(location.port)
+	console.log(location.search)
+
+
+	location.assign('https://www.baidu.com')
+ 
+</script>
+</html>
