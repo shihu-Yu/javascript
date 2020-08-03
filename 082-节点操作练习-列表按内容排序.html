@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>082-节点操作练习-列表按内容排序.html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		.wrap{
+			width: 400px;
+			margin: 50px auto;
+		}
+		#btn{
+			width: 100px;
+			height: 40px;
+			font-size: 14px;
+			margin-left: 600px;
+		}
+		.wrap li{
+			list-style: none;
+			border-bottom: 1px dashed #ccc;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<ul id="wrap" class="wrap">
+		<li>23</li>
+		<li>16</li>
+		<li>2</li>
+		<li>53</li>
+		<li>26</li>
+		<li>7</li>
+		<li>46</li>
+	</ul>
+	<input type="button" id="btn" value="排序">
+</body>
+<script type="text/javascript">
+	var btn = document.getElementById('btn')
+	var wrap = document.getElementById('wrap')
+	btn.onclick =function(){
+		var elems = wrap.children
+		var arr = []
+		for(var i=0,len=elems.length;i<len;i++){
+			arr.push(elems[i])
+		}
+		arr.sort(function(elem1,elem2){
+			return elem1.innerHTML - elem2.innerHTML
+		})
+		for(var j=0,len=arr.length;j<len;j++){
+			 wrap.appendChild(arr[j])
+		}
+	}
+
+</script>
+</html>

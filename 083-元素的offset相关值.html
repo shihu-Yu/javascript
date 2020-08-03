@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>元素的offset和client相关值.html</title>
+	<style type="text/css">
+		#father{
+			width: 600px;
+			height: 600px;
+			margin:50px auto;
+			border:1px solid black;
+			position: relative;
+		}
+		#son{
+			width: 200px;
+			height: 200px;
+			padding: 10px;
+			border:30px solid maroon;
+			position: absolute;
+			margin:20px 20px;
+			left: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div id="son"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	var father = document.getElementById('father')
+	var son = document.getElementById('son')
+	var elem = son.offsetParent
+	console.log(son.offsetLeft)
+	console.log(son.offsetTop)
+	console.log(son.offsetWidth)
+	console.log(son.offsetHeight)
+	console.log(son.clientWidth)
+	console.log(son.clientHeight)
+</script>
+</html>
