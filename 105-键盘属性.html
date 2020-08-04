@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>键盘属性</title>
+</head>
+<body>
+	<input type="text" id="txt">
+</body>
+<script type="text/javascript">
+	var elem = document.getElementById('txt')
+	elem.addEventListener('keydown',function(ev){//键盘属性只能在键盘事件keydown下使用
+		console.log(ev.keyCode)//输出键盘编码
+		console.log(ev.ctrlKey)// Ctrl键 如果不是按下Ctrl键输出结果是false,如果是输出结果是true
+		console.log(ev.shiftKey)//Shift键  如果按下的是Shift键输出结果是true  否则是false
+		console.log(ev.altKey)//与上面的同理 
+	})
+</script>
+</html>

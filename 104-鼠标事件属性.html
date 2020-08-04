@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>鼠标事件属性</title>
+	<style type="text/css">
+		body{
+			width: 3000px;
+			height: 3000px;
+			overflow: scroll;
+		}
+	</style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	document.addEventListener('click',function(){
+		console.log('clientY:'+event.clientX)//可视区(浏览器)的内沿到鼠标的距离 x是左边到鼠标的距离
+	})
+	document.addEventListener('click',function(){
+		console.log('clientY:'+event.clientY)//可视区(浏览器)的内沿到鼠标的距离  y内沿边(不包括状态栏)到鼠标的距离
+	})
+	document.addEventListener('click',function(){
+		console.log('pageX:'+event.pageX )//可视区(浏览器)的内沿加滚动距离到鼠标的距离 加上滚动条滚动的距离
+	})
+	document.addEventListener('click',function(){
+		console.log('pageY:'+event.pageY )//可视区(浏览器)的内沿加滚动距离到鼠标的距离 加上滚动条滚动的距离
+	})
+	document.addEventListener('click',function(){
+		console.log('screenX:'+event.screenX )//显示器屏幕内沿到鼠标的距离
+	})
+	document.addEventListener('click',function(){
+		console.log('screenY:'+event.screenY)//显示器屏幕内沿到鼠标的距离
+	})
+
+	document.addEventListener('mousewheel',function(event){
+		console.log(event.wheelDelta)//event.wheelDelta 鼠标滚轮距离
+	},false)
+</script>
+</html>
