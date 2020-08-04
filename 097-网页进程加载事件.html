@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>网页进程加载事件</title>
+</head>
+<body>
+	<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596515734425&di=cf62ded10e84d9d0f9e6a7e1f2f9bf5c&imgtype=0&src=http%3A%2F%2Fa2.att.hudong.com%2F36%2F48%2F19300001357258133412489354717.jpg">
+</body>
+<script type="text/javascript">
+	//load	整个页面完全加载完成时	该事件需要绑定在window上
+
+	window.addEventListener('load',function(){
+		console.log()
+	},false)
+
+	//DOMContentLoaded	纯HTML被完全加载以及解析	该事需要绑定在window或者document上
+	window.addEventListener('DOMContentLoaded',function(){
+		console.log(document.querySelector('img'))
+	},false)
+</script>
+</html>

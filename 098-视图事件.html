@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>视图事件</title>
+	<style type="text/css">
+		body{
+			width: 3000px;
+			height: 3000px;
+			overflow: scroll;
+		}
+	</style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*  //resize	浏览器窗口大小发生变化	该事件需要绑定在window上
+	window.addEventListener('resize',function(){
+		console.log(window.innerWidth)
+	},false)
+	*/
+	var i = 1
+	//scroll	浏览器窗口或者元素的滚动条变化	该事件绑定在window上或者元素上
+	window.addEventListener('scroll',function(){
+		console.log(i++)
+	},false)
+</script>
+</html>

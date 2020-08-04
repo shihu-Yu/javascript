@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>键盘事件/焦点事件/输入框事件</title>
+</head>
+<body>
+	<input type="text" id="txt">
+</body>
+<script type="text/javascript">
+	var elem = document.getElementById('txt')
+	//keydown	键盘按下
+	/*
+	document.addEventListener('keydown',function(){
+		console.log('keydown')
+	},false)
+	*/
+	//keyup	键盘抬起
+	/*
+	document.addEventListener('keyup',function(){
+		console.log('keyup')
+	},false)
+	*/
+	//keypress	键按下去触发,键不抬起会一直触发	除 Shift、Fn、CapsLock 外的任意键被按住。
+	/*
+	document.addEventListener('keypress',function(){
+		console.log('keypress')
+	},false)
+	*/
+	//focus	元素获取焦点
+	/*
+	elem.addEventListener('focus',function(){
+		console.log('focus')
+	},false)
+	*/
+	//blur	元素失去焦点	
+	/*
+	elem.addEventListener('blur',function(){
+		console.log('blur')
+	},false)
+	*/
+	//change	内容有改动,失去焦点执行
+	elem.addEventListener('change',function(){
+		console.log('change')
+	},false)
+	//input	输入后触发,不包括功能键	
+	elem.addEventListener('input',function(){
+		console.log('input')
+	},false)
+</script>
+</html>

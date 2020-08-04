@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>表单事件</title>
+</head>
+<body>
+	<form id="form1">
+		<input type="text" id="txt">
+		<input type="submit" >
+		<input type="reset" name="">
+	</form>
+</body>
+<script type="text/javascript">
+	//表单事件只能在表单标签中使用
+	var form = document.getElementById('form1')
+	var txt = document.getElementById('txt')
+	//submit	form表单提交	
+	form.addEventListener('submit',function(){
+		console.log('submit')
+	},false)
+	//reset	form表单重置
+	form.addEventListener('reset',function(){
+		console.log('reset')
+	},false)
+</script>
+</html>

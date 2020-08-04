@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DOM2级</title>
+</head>
+<body>
+	<p id="box">你是我的眼</p>
+	<input type="button" value="点击清除" id="btn">
+</body>
+<script type="text/javascript">
+	
+	var elem = document.getElementById('box')
+	var btn = document.getElementById('btn')
+	function toRed(){
+		this.style.color = 'green'
+	}
+	function toSize(){
+		this.style.fontSize = '30px'
+	}
+	function del(){//移除函数
+		elem.removeEventListener('click',toSize,false);
+	}
+
+	elem.addEventListener('click',toRed,false)
+	elem.addEventListener('click',toSize,false)
+	btn.addEventListener('click',del,false)
+	
+	//在IE浏览器中事件处理程序格式
+
+	//elem.attachEvent('onclick',toRed)
+	//elem.attachEvent('onclick',toSize)
+
+	//elem.detachEvent('onclick',toSize)
+</script>
+</html>

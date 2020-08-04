@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件流-冒泡</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            margin:50px auto;
+         	background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script>
+	//冒泡事件 最开始是从元素开始开始接受的，然后逐级向上传播  因此以下代码的输出结果为
+	/*
+	elem click
+ 	body click
+	html click
+ 	document click
+	window click
+	 */
+    var elem = document.getElementById('box');
+    elem.addEventListener('click',function(){
+        console.log('elem click');
+    },false);
+    document.body.addEventListener('click',function(){
+        console.log('body click');
+    },false);
+    document.documentElement.addEventListener('click',function(){
+        console.log('html click');
+    },false);
+    document.addEventListener('click',function(){
+        console.log('document click');
+    },false);        
+    window.addEventListener('click',function(){
+        console.log('window click');
+    },false);
+</script>
+</html>
