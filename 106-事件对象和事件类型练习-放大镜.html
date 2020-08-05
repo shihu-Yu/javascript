@@ -3,27 +3,160 @@
 <head>
 	<meta charset="utf-8">
 	<title>事件对象和事件类型练习-放大镜</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#wrap{
+			position: absolute;
+			margin-left: 50px;
+			margin-top: 50px;
+			width: 100%;
+
+		}
+		#big-wrap{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 450px;
+			height: 450px;
+			border: 1px solid #ccc;
+		}
+		#big-wrap img{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		#mask{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 200px;
+			height: 200px;
+			background-color: rgba(255,255,0,0.5);
+			cursor: move;
+			display: none;
+		}
+		#small-wrap{
+			position: absolute;
+			top: 460px;
+			left: 0;
+			width: 450px;
+		}
+		#small-wrap li{
+			list-style: none;
+			width: 54px;
+			height: 54px;
+			float: left;
+			opacity: 0.5;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+		#small-wrap img{
+			width: 100%;
+			height: 100%;
+		}
+		#small-wrap li.active{
+			opacity: 1;
+		}
+		#large-wrap{
+			position: absolute;
+			top: 0;
+			left: 452px;
+			border:1px solid #ccc;
+			width: 600px;
+			height: 600px;
+			overflow: hidden;
+			display: none;
+		}
+		#large-wrap img{一定要记着添加定位属性，否则不会移动
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 800px;
+			height: 800px;
+		}
+	</style>
 </head>
 <body>
 	<div id="wrap">
 		<div id="big-wrap">
-			<img src="">
-			<div id="msk"></div>
+			<img src="./images/p-b-001.jpg">
+			<div id="mask"></div>
 		</div>
 		<ul id="small-wrap">
-			<li>
-				<img src="">
+			<li class="active">
+				<img src="./images/p-s-001.jpg">
 			</li>
 			<li>
-				<img src="">
+				<img src="./images/p-s-002.jpg">
 			</li>
 			<li>
-				<img src="">
+				<img src="./images/p-s-003.jpg">
 			</li>
 		</ul>
 		<div id="large-wrap">
-			<img src="cd">
+			<img src="./images/p-l-001.jpg">
 		</div>
 	</div>
 </body>
+<script>
+	var smallImages = document.querySelectorAll('#small-wrap li')
+	var bigImg = document.querySelector('#big-wrap img')//这里不能使用querySelectorAll来获取元素
+	var largeImg = document.querySelector('#large-wrap img')
+	var bigWrap = document.getElementById('big-wrap')
+	var largeWrap = document.getElementById('large-wrap')
+	var mask = document.getElementById('mask')
+	var wrap = document.getElementById('wrap')
+	for(var i=0,len=smallImages.length; i<len;i++){
+		smallImages[i].index = i
+		smallImages[i].onmouseover = function () {
+			for (var j=0;j<len;j++){
+				smallImages[j].className = ''
+			}
+			this.className = 'active'
+			bigImg.src = "./images/p-b-00"+(this.index+1)+".jpg"
+			largeImg.src = "./images/p-l-00"+(this.index+1)+".jpg"
+		}
+	}
+
+	bigWrap.onmouseover = function () {
+		mask.style.display = 'block'
+		largeWrap.style.display = 'block'
+		bigWrap.onmousemove = function (ev) {
+			var maskW = mask.offsetWidth
+			var maskH = mask.offsetHeight
+			var bigWrapW = bigWrap.offsetWidth
+			var bigWrapH = bigWrap.offsetHeight
+			var l = ev.pageX - wrap.offsetLeft - maskW * 0.5
+			var t = ev.pageY - wrap.offsetTop - maskH * 0.5
+			if(l < 0){/*这个分支结构一定要写在mask.style.left = l + 'px'    mask.style.top = t + 'px'前面*/
+				l  = 0
+			}else if(l > bigWrapW - maskW){
+				l = bigWrapW - maskW
+			}
+			if(t < 0){
+				t = 0
+			}else if(t > bigWrapH - maskH){
+				t = bigWrapH - maskH
+			}
+			mask.style.left = l + 'px'
+			mask.style.top = t + 'px'
+
+			var percentX = l / (bigWrapW - maskW)
+			var percentY = t / (bigWrapH - maskH)
+
+			largeImg.style.left = (largeWrap.offsetWidth - largeImg.offsetWidth) * percentX + 'px'
+			largeImg.style.top = (largeWrap.offsetHeight - largeImg.offsetHeight) * percentY + 'px'
+		}
+	}
+	bigWrap.onmouseout = function () {
+		mask.style.display = 'none'
+		largeWrap.style.display = 'none'
+	}
+
+</script>
 </html>
