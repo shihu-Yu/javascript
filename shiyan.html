@@ -2,14 +2,157 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>事件对象和事件类型练习-放大镜</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#wrap{
+			position: absolute;
+			margin-left: 50px;
+			margin-top: 50px;
+			width: 100%;
+
+		}
+		#big-wrap{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 450px;
+			height: 450px;
+			border: 1px solid #ccc;
+		}
+		#big-wrap img{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		#mask{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 200px;
+			height: 200px;
+			background-color: rgba(255,255,0,0.5);
+			cursor: move;
+			display: none;
+		}
+		#small-wrap{
+			position: absolute;
+			top: 460px;
+			left: 0;
+			width: 450px;
+		}
+		#small-wrap li{
+			list-style: none;
+			width: 54px;
+			height: 54px;
+			float: left;
+			opacity: 0.5;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+		#small-wrap img{
+			width: 100%;
+			height: 100%;
+		}
+		#small-wrap li.active{
+			opacity: 1;
+		}
+		#large-wrap{
+			position: absolute;
+			top: 0;
+			left: 452px;
+			border:1px solid #ccc;
+			width: 600px;
+			height: 600px;
+			overflow: hidden;
+			display: none;
+		}
+		#large-wrap img{
+		position: absolute;
+			left: 0;
+			top: 0;
+			width: 800px;
+			height: 800px;
+		}
+	</style>
 </head>
 <body>
-	<script type="text/javascript">
-		var a;
-		console.log(a);
-		a = 10;
-		console.log(a);
-	</script>
+<div id="wrap">
+	<div id="big-wrap">
+		<img src="./images/p-b-001.jpg">
+		<div id="mask"></div>
+	</div>
+	<ul id="small-wrap">
+		<li class="active">
+			<img src="./images/p-s-001.jpg">
+		</li>
+		<li>
+			<img src="./images/p-s-002.jpg">
+		</li>
+		<li>
+			<img src="./images/p-s-003.jpg">
+		</li>
+	</ul>
+	<div id="large-wrap">
+		<img src="./images/p-l-001.jpg">
+	</div>
+</div>
 </body>
+<script>
+	var smallImages = document.querySelectorAll('#small-wrap li')
+	var bigImages = document.querySelector('#big-wrap img')
+	var bigWrap = document.getElementById('big-wrap')
+	var largeImg = document.querySelector('#large-wrap img')
+	var largeWrap = document.getElementById('large-wrap')
+	var wrap = document.getElementById('wrap')
+
+	for(var i = 0,len = smallImages.length;i<len;i++) {
+		smallImages[i].index = i
+		smallImages[i].onmouseover = function () {
+			for (var j = 0; j < len; j++) {
+				smallImages[j].className = ''
+			}
+			this.className = 'active'
+			bigImgs.src = "./images/p-b-00" + (this.index + 1) + ".jpg"
+			largeImgs.src = "./images/p-l-00" + (this.index + 1) + ".jpg"
+		}
+	}
+		bigWrap.onmouseover = function(){
+			mask.style.display = 'block'
+			largeWrap.style.display = 'block'
+			bigWrap.onmousemove = function(ev){
+			var maskW = mask.offsetWidth
+			var maskH = mask.offsetHeight
+			var l = ev.pageX-wrap.offsetLeft - maskW * 0.5
+			var t = ev.pageY-wrap.offsetTop - maskH * 0.5
+			if(l<0){
+				l = 0
+			}else if(l > bigWrap.offsetWidth - mask.offsetWidth){
+				l = bigWrap.offsetWidth - mask.offsetWidth
+			}
+			if(t<0){
+				t = 0
+			}else if(t > bigWrap.offsetHeight - mask.offsetHeight){
+				t = bigWrap.offsetHeight - mask.offsetHeight
+			}
+				mask.style.left = l + 'px'
+				mask.style.top = t + 'px'
+
+				var percentX = l / (bigWrap.offsetWidth - mask.offsetWidth)
+				var percentY= l / (bigWrap.offsetHeight- mask.offsetHeight)
+
+				largeImg.style.left = percentX * (largeWrap.offsetWidth - largeImg.offsetWidth) + 'px'
+				largeImg.style.top = percentY * (largeWrap.offsetHeight - largeImg.offsetHeight) + 'px'
+			}
+		bigWrap.onmouseout = function(){
+			mask.style.display = 'none'
+			largeWrap.style.display = 'none'
+		}
+	}
+</script>
 </html>

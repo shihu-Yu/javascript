@@ -24,9 +24,6 @@
 			border: 1px solid #ccc;
 		}
 		#big-wrap img{
-			position: absolute;
-			top: 0;
-			left: 0;
 			width: 100%;
 			height: 100%;
 		}
@@ -44,7 +41,7 @@
 			position: absolute;
 			top: 460px;
 			left: 0;
-			width: 450px;
+			height: 54px;
 		}
 		#small-wrap li{
 			list-style: none;
@@ -55,7 +52,7 @@
 			cursor: pointer;
 			margin-right: 10px;
 		}
-		#small-wrap img{
+		#small-wrap li img{
 			width: 100%;
 			height: 100%;
 		}
@@ -72,7 +69,7 @@
 			overflow: hidden;
 			display: none;
 		}
-		#large-wrap img{一定要记着添加定位属性，否则不会移动
+		#large-wrap img{
 			position: absolute;
 			left: 0;
 			top: 0;
@@ -111,6 +108,7 @@
 	var largeWrap = document.getElementById('large-wrap')
 	var mask = document.getElementById('mask')
 	var wrap = document.getElementById('wrap')
+	console.log(bigWrap)
 	for(var i=0,len=smallImages.length; i<len;i++){
 		smallImages[i].index = i
 		smallImages[i].onmouseover = function () {
@@ -126,6 +124,7 @@
 	bigWrap.onmouseover = function () {
 		mask.style.display = 'block'
 		largeWrap.style.display = 'block'
+
 		bigWrap.onmousemove = function (ev) {
 			var maskW = mask.offsetWidth
 			var maskH = mask.offsetHeight
@@ -133,7 +132,7 @@
 			var bigWrapH = bigWrap.offsetHeight
 			var l = ev.pageX - wrap.offsetLeft - maskW * 0.5
 			var t = ev.pageY - wrap.offsetTop - maskH * 0.5
-			if(l < 0){/*这个分支结构一定要写在mask.style.left = l + 'px'    mask.style.top = t + 'px'前面*/
+			if(l < 0){
 				l  = 0
 			}else if(l > bigWrapW - maskW){
 				l = bigWrapW - maskW
