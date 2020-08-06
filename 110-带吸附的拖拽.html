@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>带吸附的拖拽</title>
+	<style type="text/css">
+	*{
+		padding：0;
+		margin:0;
+	}
+	body{
+		width: 3000px;
+		height: 3000px;
+		overflow: scroll;
+	}
+	#father{
+		width: 600px;
+		height: 600px;
+		border: 1px solid black;
+		position: absolute;
+		top: 50px;
+		left: 100px;
+	}
+	#box{
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		top: 50px;
+		left: 100px;
+		background-color: green;
+	}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div id="box"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	var elem = document.getElementById('box')
+	var elemF = document.getElementById('father')
+	elem.onmousedown = function(ev){
+		var disX = ev.pageX - elem.offsetLeft
+		var disY = ev.pageY - elem.offsetTop
+		document.onmousemove = function(ev){
+			var l = ev.pageX - disX
+			var t = ev.pageY - disY
+			if(l < 20){
+				l = 0
+			}else if(l + 20 > elemF.offsetWidth  - elem.offsetWidth){
+				l = elemF.offsetWidth  - elem.offsetWidth
+			}
+			if(t < 20){
+				t = 0
+			}else if (t +20 > elemF.offsetHeight  - elem.offsetHeight){
+				t = elemF.offsetHeight  - elem.offsetHeight
+			}
+			elem.style.left = l + 'px'
+			elem.style.top = t + 'px'
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null
+			document.onmouseup = null
+		}
+	}
+</script>
+</html>

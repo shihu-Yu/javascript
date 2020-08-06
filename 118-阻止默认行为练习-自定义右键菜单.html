@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>自定义右键菜单</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		#menu{
+			width: 200px;
+			height: 300px;
+			background-color: rgba(123,123,0,0.3);
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="menu">自定义右键菜单</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var menu = document.getElementById('menu')
+	var wrap = document.getElementById('wrap')
+
+	document.addEventListener('contextmenu',function(ev){
+		ev.preventDefault()
+		menu.style.display = 'block'
+		menu.style.left = ev.pageX + 'px'
+		menu.style.top = ev.pageY + 'px'
+	},false)
+	document.addEventListener('click',function(){
+			menu.style.display = 'none'
+	},false)
+	wrap.addEventListener('click',function(ev){
+			ev.stopPropagation()//阻止冒泡
+	},false)	
+</script>
+</html>

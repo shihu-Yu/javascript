@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>模态框登陆</title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin:0;	
+	}
+	#wrap{
+		width: 300px;
+		height: 200px;
+		padding: 20px;
+		box-shadow: 1px 5px 3px rgba(123,123,0);
+		position: : fixed;
+		top: 50%;
+		left: 50%
+		transform:translateX(-50%) translateY(-50%);
+		z-index: 999; 
+        background-color: #fff; 
+	}
+	.overlay{
+		display: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		background: rgba(0,0,0,.8);
+	}
+	</style>
+</head>
+<body>
+	<button id="go-log-in">登陆</button>
+	<div id="wrap">
+		<div>
+			<input type="text" placeholder="请输入账号">
+		</div>
+		<div>
+			<input type="texr" placeholder="请输入密码">
+		</div>
+		<button>登陆</button>
+		<button>注册</button>
+	</div>
+	</div>
+    <div id="mask" class="overlay">
+
+    </div>
+</body>
+<script type="text/javascript">
+	var goLogIn = document.getElementById('go-log-in')
+	var wrap = document.getElementById('wrap')
+	goLogIn.onclick = function(){
+
+	}
+</script>
+</html>

@@ -121,7 +121,7 @@
 		}
 	}
 
-	bigWrap.onmouseover = function () {
+	bigWrap.onmouseenter = function () {
 		mask.style.display = 'block'
 		largeWrap.style.display = 'block'
 
@@ -152,7 +152,7 @@
 			largeImg.style.top = (largeWrap.offsetHeight - largeImg.offsetHeight) * percentY + 'px'
 		}
 	}
-	bigWrap.onmouseout = function () {
+	bigWrap.onmouseleave = function () {
 		mask.style.display = 'none'
 		largeWrap.style.display = 'none'
 	}

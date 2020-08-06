@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>阻止冒泡和阻止默认行为</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		#grandfather{
+			width: 600px;
+			height: 600px;
+			margin:50px auto;
+			background-color: maroon;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		#father{
+			width: 400px;
+			height: 400px;
+			background-color: green;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		#son{
+			width: 200px;
+			height: 200px;
+			background-color: purple;
+		}
+	</style>
+</head>
+<body>
+	<div id="grandfather">
+		<div id="father">
+			<div id="son"></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var grandFather = document.getElementById('grandfather')
+	var father = document.getElementById('father')
+	var son = document.getElementById('son')
+	son.onclick = function(ev){
+		console.log('son click')
+		ev.stopPropagation()
+	}
+	father.onclick = function(ev){
+		console.log('father click')
+		ev.stopPropagation()//阻止冒泡
+	}
+	grandFather.onclick = function(ev){
+		console.log('grandFather click')
+	}
+</script>
+</html>

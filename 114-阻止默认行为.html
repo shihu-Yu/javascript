@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>阻止默认行为</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//阻止鼠标右键
+	/*
+	document.oncontextmenu = function(ev){
+		return false//这中方法只能用在DMO０级添加事件　中
+	}
+	*/
+	/*
+	document.oncontextmenu = function(ev){
+		ev.preventDefault()//这种方法适用于所有添加事件的方法
+	}
+	*/
+	document.addEventListener('contextmenu',function(ev){
+		ev.preventDefault()
+	},false)
+</script>
+</html>
