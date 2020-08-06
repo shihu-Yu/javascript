@@ -3,8 +3,41 @@
 <head>
 	<meta charset="utf-8">
 	<title>事件委托</title>
+	<style>
+		*{
+			padding: 0;
+			mergin:0;
+		}
+		.son{
+			width: 100px;
+			height: 40px;
+			background-color: royalblue;
+			margin-top: 20px;
+		}
+
+	</style>
 </head>
 <body>
-
+	<button id="btn">追加元素</button>
+	<div id="wrap">
+		<div class="son"></div>
+		<div class="son"></div>
+		<div class="son"></div>
+	</div>
 </body>
+<script>
+	var btn = document.getElementById('btn')
+	var wrap = document.getElementById('wrap')
+	btn.onclick = function(){
+		var elem = document.createElement('div')
+		elem.className = 'son'
+		wrap.appendChild(elem)
+	}
+	wrap.onclick = function (ev) {
+		if(ev.target.className == 'son'){
+			wrap.removeChild(ev.target)
+		}
+	}
+</script>
+
 </html>

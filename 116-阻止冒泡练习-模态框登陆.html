@@ -9,24 +9,30 @@
 		margin:0;	
 	}
 	#wrap{
+		display: none;
 		width: 300px;
 		height: 200px;
 		padding: 20px;
 		box-shadow: 1px 5px 3px rgba(123,123,0);
-		position: : fixed;
+		position: fixed;
 		top: 50%;
-		left: 50%
+		left: 50%;
 		transform:translateX(-50%) translateY(-50%);
 		z-index: 999; 
         background-color: #fff; 
 	}
+	#wrap input{
+		margin-bottom: 20px;
+		width: 80%;
+	}
 	.overlay{
-		display: fixed;
+		display: none;
+		position: fixed;
 		top: 0;
 		right: 0;
-		left: 0;
 		bottom: 0;
-		background: rgba(0,0,0,.8);
+		left: 0;
+		background: rgba(0,0,0,.3);
 	}
 	</style>
 </head>
@@ -42,7 +48,6 @@
 		<button>登陆</button>
 		<button>注册</button>
 	</div>
-	</div>
     <div id="mask" class="overlay">
 
     </div>
@@ -50,8 +55,19 @@
 <script type="text/javascript">
 	var goLogIn = document.getElementById('go-log-in')
 	var wrap = document.getElementById('wrap')
-	goLogIn.onclick = function(){
+	var mask = document.getElementById('mask')
 
+	goLogIn.onclick = function(ev){
+		wrap.style.display = 'block'
+		mask.style.display = 'block'
+		ev.stopPropagation()
+	}
+	document.onclick = function(){
+		wrap.style.display = 'none'
+		mask.style.display = 'none'
+	}
+	wrap.onclick = function(ev){
+		ev.stopPropagation()
 	}
 </script>
 </html>

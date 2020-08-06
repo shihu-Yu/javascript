@@ -42,8 +42,15 @@
 		list.appendChild(elem)
 		input.value = ''
 	}
-	inpur.onkeydown = function(){
+	input.onkeydown = function(ev){
 		var keyCode = ev.keyCode
+		console.log(keyCode)
+		if((keyCode < 48 || keyCode > 57) && keyCode != 8 && keyCode != 37 && keyCode != 39){
+			ev.preventDefault()
+		}
+		if(keyCode == 13 && ev.ctrlKey){
+			btn.onclick()
+		}
 	}
 </script>
 </html>
