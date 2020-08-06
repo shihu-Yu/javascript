@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>限制在父容器中拖拽</title>
+	<style type="text/css">
+	*{
+		padding：0;
+		margin:0;
+	}
+	body{
+		
+		overflow: scroll;
+	}
+	#contant{
+		width: 600px;
+		position: relative;
+		margin:50px auto;
+	}
+	#wrap{
+		width: 30px;
+		height: 400px;
+		border: 1px solid black;
+		position: absolute;
+		top: 0px;
+		left: 302px;
+		background-color: gray;
+	}
+	#box{
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		background-color: green;
+	}
+	#text{
+		width: 300px;
+		height: 400px;
+		border: 1px solid black;
+		position: absolute;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+	}
+	#text-wrap{
+		position: absolute;
+		top: 0;
+        top:0;
+	}
+	</style>
+</head>
+<body>
+	<div id="contant">
+		<div id="wrap">
+			<div id="box"></div>
+		</div>
+		<div id="text">
+			<div id="text-wrap">
+			大河报·大河客户端记者刘瑞朝
+
+报社讯天色阴沉，雨水阵阵，湿度较大，感觉较闷。根据河南省气象台预报，未来几天，我省仍将沉浸在阵雨的频繁侵扰之下。周四夜里到周五，我省将迎来一次明显降水过程，黄淮之间部分地区有大到暴雨并伴有短时强降水等强对流天气。
+大河报记者了解到，8月1日至4日我省处在缓慢北抬的副热带高压边缘，不稳定能量加剧，淮河以北多地暴雨、大暴雨天气频发。1日至2日南召、鲁山局地出现大暴雨，3日夜间兰考红庙出现271.6毫米的特大暴雨。4日新乡、安阳出现大暴雨、局部特大暴雨，有41个乡镇大于100毫米，延津和滑县有4个乡镇大于200毫米，延津县榆林达352.7毫米，其最大小时雨强达128.1毫米(5日1时~2时)。
+虽然降雨不断，但我省汛情较为平稳。8月4日8时至5日8时，黄河小浪底水文站流量2710立方米每秒，花园口水文站流量3010立方米每秒，夹河滩水文站流量2860立方米每秒。全省其他主要河道无较大汛情发生。出山店、石山口、鲇鱼山、板桥、石漫滩、宿鸭湖、燕山、孤石滩、白龟山9座大型水库，香山、兔子湖、潭山、铁佛寺、澎河、打磨石岩、冢岗庙、打磨岗8座中型水库超汛限水位。
+根据预计，最近几天，我省沿黄以北仍有局地暴雨、大暴雨。6日夜里至7日随着副热带高压南落、低槽东移，我省将有大范围强降水天气，黄淮之间部分地区有暴雨，局部大暴雨并伴有短时强降水等强对流天气，过程降水量50毫米～80毫米、局部100毫米～150毫米，最大可达200毫米。
+具体到郑州市，6日夜里至7日副热带高压南落、低槽东移，郑州市有大范围大雨，局部暴雨并伴有短时强降水等强对流天气，过程降水量40毫米～70毫米、局部80毫米～100毫米，最大小时雨强30毫米～50毫米。
+6日白天，淮河以北阴天间多云，大部分地区有阵雨、雷阵雨，黄河以北部分地区有中雨，局部大到暴雨并伴有短时强降水等强对流天气;其它地区多云到阴天。6日夜里到7日，全省阴天，大部分地区有小到中阵雨、雷阵雨，其中黄淮之间部分地区有大到暴雨并伴有短时强降水等强对流天气。
+8日，黄河以南阴天，大部分地区有小到中阵雨、雷阵雨，其中东部、中南部部分地区有大雨并伴有短时强降水等强对流天气;其它地区阴天到多云。
+气象部门提醒，各地需加强防范强降水造成的城市内涝、农田渍涝及中小河流洪水和山洪地质灾害。河南省气象局已启动暴雨灾害Ⅲ级应急响应，将密切监视天气变化，加强预报预警服务。
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var scroll = document.getElementById('box')
+	var scrollWrap = document.getElementById('wrap')
+	var text = document.getElementById('text')
+	var textWrap = document.getElementById('text-wrap')
+	scroll.onmousedown = function(ev){
+		var disY = ev.pageY - scroll.offsetTop
+
+	
+		scrollWrap.onmousemove = function(ev){
+			var t = ev.pageY - disY
+			var maxOffsetH = scrollWrap.offsetHeight - scroll.offsetHeight
+			if(t < 0){
+				t = 0
+			}else if (t > maxOffsetH){
+				t = maxOffsetH
+			}
+			
+			scroll.style.top = t + 'px'
+
+			var percentY = t / maxOffsetH 
+			textWrap.style.top = (text.offsetHeight - textWrap.offsetHeight) * percentY + 'px'
+		}
+		document.onmouseup = function(){
+			scrollWrap.onmousemove = null
+			document.onmouseup = null
+		}
+	}
+</script>
+</html>

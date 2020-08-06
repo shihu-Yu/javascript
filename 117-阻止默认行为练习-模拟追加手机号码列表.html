@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>模拟追加手机号码列表</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		.wrap{
+			width: 400px;
+			margin:50px auto;
+		}
+		#list{
+			margin-top: 20px;
+			list-style: none;
+		}
+		#list li{
+			border-top: 1px dashed #ccc;
+			line-height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<input type="text" placeholder="请输入号码" id="input">
+		<button id="btn">追加</button>
+		<ul id="list">
+			<li>123456789</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+	var btn = document.getElementById('btn')
+	var input = document.getElementById('input')
+	var list = document.getElementById('list')
+	btn.onclick = function(){
+		var val = input.value
+		var elem = document.createElement('li')
+		elem.innerHTML = val
+		list.appendChild(elem)
+		input.value = ''
+	}
+	inpur.onkeydown = function(){
+		var keyCode = ev.keyCode
+	}
+</script>
+</html>
