@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>循环定时器</title>
+</head>
+<body>
+
+</body>
+	<script type="text/javascript">
+		var i = 0
+		setInterval(function(elem){
+			i++
+			console.log(elem+i)
+		},2000,'haha')
+
+		var timer = function fn(msg){
+			i++
+			console.log(msg+i)
+			setInterval(timer,2000,'xixi')
+			clearInterval(timer)
+		}
+		
+	</script>
+</html>

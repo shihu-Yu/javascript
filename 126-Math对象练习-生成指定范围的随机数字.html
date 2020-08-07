@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>生成指定范围的随机数字</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//写一个函数,指定最小值和最大值,返回一个在最小值和最大值之间的一个随机数字。
+	function getRandom(min,max){
+		return Math.round(min+ (max-min) * Math.random())
+	}
+
+	console.log(getRandom(20,30))
+</script>
+</html>
