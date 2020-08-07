@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>定时器练习-倒计时</title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin: 0;
+		}
+		body{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			color: white;
+			background-color: rgb(123,123,0);
+		}
+		#timer{
+			font-size: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="timer">
+		距离活动结束还有 00:00:00
+	</div>
+</body>
+<script type="text/javascript">
+	var elem = document.getElementById('timer')
+	var endDate = new Date('2020-08-08 00:00:00')
+	var timer = 0
+	 function toStr(num){
+		return num<10 ? '0' + num :''+ num
+	}
+	var endTime = endDate.getTime()
+
+	function handlerTime(){
+
+		var currentTime = Date.now()
+		var allMilliSeconds = endTime - currentTime
+		var allSeconds = parseInt(allMilliSeconds / 1000)
+
+		if(allMilliSeconds < 0 ){
+			allSeconds = 0
+			clearInterval(timer)
+		}
+
+		var hours = parseInt(allSeconds / 3600)
+		var minutes = parseInt((allSeconds % 3600) / 60 )
+		var seconds = parseInt(allSeconds % 60)
+		elem.innerHTML = '距离活动结束还有 ' + toStr(hours) + ':' + toStr(minutes) + ':' + toStr(seconds)
+	}
+	timer = setInterval(handlerTime,500)//括号中填写的时函数名称 而非调用函数
+	handlerTime()
+	
+</script>
+</html>

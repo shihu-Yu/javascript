@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>自定义滚动条</title>
+	<title>带边框的拖拽</title>
 	<style type="text/css">
 	*{
 		padding：0;
@@ -67,7 +67,7 @@
 
 			document.body.removeChild(wrap)
 
-			elem.onmousemove = null
+			document.onmousemove = null
 			document.onmouseup = null
 		}
 	}

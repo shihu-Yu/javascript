@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>异步练习</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	console.log(1)
+	setTimeout(function(){
+		console.log(2)
+	},0)
+	console.log(3)
+	//输出结果为132
+	*/
+	/*
+	console.log(1)
+	setTimeout(function(){
+		console.log(2)
+	},0)
+	console.log(3)
+	while(true){
+		//输出结果为13  因为这是一个死循环，不会在从任务列表中拿取到定时器的输出结果
+	}
+	*/
+
+	for (var i = 0; i < 5; i++) {
+		//输出结果为5个5 循环五次只是创建了五个定时器 
+		//因为for循环之后的 i =5,此时从任务列表中拉出来时 i 的值为5
+    	setTimeout(function () {
+        	console.log(i);
+    }, 1000);
+}
+</script>
+</html>
