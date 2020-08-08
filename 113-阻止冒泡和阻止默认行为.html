@@ -40,15 +40,15 @@
 	</div>
 </body>
 <script type="text/javascript">
-	var grandFather = document.getElementById('grandfather')
-	var father = document.getElementById('father')
-	var son = document.getElementById('son')
+	var grandFather = document.getElementById('grandfather');
+	var father = document.getElementById('father');
+	var son = document.getElementById('son');
 	son.onclick = function(ev){
-		console.log('son click')
+		console.log('son click');
 		ev.stopPropagation()
 	}
 	father.onclick = function(ev){
-		console.log('father click')
+		console.log('father click');
 		ev.stopPropagation()//阻止冒泡
 	}
 	grandFather.onclick = function(ev){
