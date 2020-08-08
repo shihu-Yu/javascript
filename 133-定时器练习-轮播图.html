@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>133-定时器练习-轮播图.html</title>
+	<style type="text/css">
+	.wrap{
+	    width: 520px;
+	    height: 280px;
+	    margin: 50px auto;
+	    position: relative;
+	}
+	.wrap .list{
+		list-style: none;
+	}
+	.wrap .list .items{
+		position: absolute;
+		top: 0;
+		left: 0; 
+		opacity: 0;
+		transition: opacity .3s;
+	}
+	.wrap .list .show{
+		opacity: 1;
+	}
+	.wrap .list li img{
+	    width: 100%;
+	    height: 100%;
+	}
+	.arrow{
+	    position: absolute;
+	    top:50%;
+	    width: 40px;
+	    line-height: 80px;
+	    background-color: rgba(0,0,0,0.5);
+	    margin-top: -40px;
+	    font-size: 30px;
+	    text-align: center;
+	    color: #fff;
+	    cursor: pointer;
+	    user-select: none;            
+	}
+	.arrow:hover{
+	  background-color: rgba(0,0,0,0.2);  
+	}
+	.left-arrow{
+	    left:0;
+	}
+	.right-arrow{
+	    right:0;
+	}
+	.btns{
+	    list-style: none;
+	    position: absolute;
+	    right: 50px;
+	    bottom: 20px;
+	}
+	.btns li{
+	    float: left;
+	    width: 30px;
+	    line-height: 30px;
+	    text-align: center;
+	    background-color: rgba(0,123,123,0.5);
+	    margin-right: 10px;
+	    color: #fff;
+	    border-radius: 50%;
+	    cursor: pointer;
+	    user-select: none;      
+	}
+	.btns .active{
+		opacity: 0.5;
+	}
+	.btns li:hover{
+	    background-color: rgba(0,0,0,0.2);
+	} 
+	</style>
+</head>
+<body>
+	 <div class="wrap">
+	 	<ul class="list">
+	 		<li class="show items">
+        		<img src="./images/l-001.jpg" alt="">
+        	</li>
+        	<li class="items">
+        		<img src="./images/l-002.jpg" alt="">
+        	</li>
+        	<li class="items">
+        		<img src="./images/l-003.jpg" alt="">
+        	</li>
+        </ul>
+        <span class="left-arrow arrow">&lt;</span>
+        <span class="right-arrow arrow">&gt;</span>
+        <ul class="btns">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+	var btns = document.querySelectorAll('.btns li')
+	var lists = document.querySelectorAll('.wrap .list li')
+	var leftArrow = document.querySelector('.left-arrow')
+	var rightArrow = document.querySelector('.right-arrow')
+	var wrap = document.querySelector('.wrap')
+	//当前的索引
+	var activeIndex = 0
+	 //即将显示的索引
+	var now = 0
+	var len = lists.length
+	var timer = 0
+	function tab(){
+		lists[activeIndex].className = 'items'
+		btns[now].className = ''
+		lists[now].className = 'show items'
+		btns[activeIndex].className = 'active'
+		activeIndex = now
+	}
+	function setCorrectIndex(){
+		if(now >= len){
+			now = 0
+		}
+		if(now < 0){
+			now = len-1
+		}
+	}
+	rightArrow.onclick = function(){
+		now++
+		setCorrectIndex()
+		tab()
+	}
+	leftArrow.onclick = function(){
+		now--
+		setCorrectIndex()
+		tab()
+	}
+	 for(var i = 0;i<len;i++){
+        btns[i].index = i
+        btns[i].onclick = function(){
+            if(this.index != activeIndex){
+                now = this.index
+                tab()
+            }
+        }
+    }
+	timer = setInterval(rightArrow.onclick,3000)
+	wrap.onmouseenter = function(){
+		clearInterval(timer)
+	}
+	wrap.onmouseleave = function(){
+		timer = setInterval(rightArrow.onclick,3000)
+	}
+</script>
+</html>
