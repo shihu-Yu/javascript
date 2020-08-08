@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>让元素移动</title>
+	<title>反向动画</title>
 	<style type="text/css">
 		*{
 			padding: 0;
@@ -14,7 +14,7 @@
 			background-color: rgba(123,123,0,0.8);
 			position: absolute;
 			top: 100px;
-			left: 0;
+			left: 600px;
 		}
 		.line{
 		    width: 1px;
@@ -22,7 +22,7 @@
 		    background-color: #000;
 		    position: absolute;
 		    top:50px;
-		    left:604px;
+		    left:600px;
 		}
 	</style>
 </head>
@@ -38,11 +38,12 @@
 	btn.onclick = function(){
 		clearInterval(timer)
 		timer = setInterval(function(){
-		if(box.offsetLeft == 600){
+			if(box.offsetLeft == 0){
 			clearInterval(timer)
-		}
-		box.style.left = 5 + box.offsetLeft + 'px' 
-	},50)
+		}else{
+			box.style.left = -5 + box.offsetLeft + 'px' 
+			}
+		},50)
 	}
 	
 </script>
