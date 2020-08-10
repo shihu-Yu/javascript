@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>改变this指向</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//在这里我们介绍三个用来改变this的方法:call、apply 和 bind
+
+	/*
+
+	//call  语法格式  fn.call(改变后的this对象,参数1,参数2...)
+	var tom = {
+    name:"Tom"
+	}
+	function sayHi(age,city) {
+	    console.log("I am "+this.name+", I am " + age + " years old and I am from "+ city)
+	}
+
+	var name = "Leo"
+
+	sayHi(18,"BeiJing")//I am Leo, I am 18 years old and I am from BeiJing
+	sayHi.call(18,"BeiJing")//I am undefined, I am BeiJing years old and I am from undefined
+	sayHi.call(tom,18,"BeiJing")// I am Tom, I am 18 years old and I am from BeiJing       这里的tom不可以不写，当没有时可以填 null这时this指向的对象不改变
+
+	*/
+
+	//apply 语法格式  fn.apply(改变后的this对象,[参数1,参数2...])
+
+	var tom = {
+    name:"Tom"
+	}
+	function sayHi(age,city) {
+	    console.log("I am "+this.name+", I am " + age + " years old and I am from "+ city)
+	}
+
+	var name = "Leo"
+
+	sayHi(18,"BeiJing")//I am Leo, I am 18 years old and I am from BeiJing
+	sayHi.apply(tom,[18,"BeiJing"])//I am Tom, I am 18 years old and I am from BeiJing         这里的tom 指改变后的参数对象
+	sayHi.apply([18,"BeiJing"])//改变后的对象不写，this指向window   因此输出结果为I am undefined, I am undefined years old and I am from undefined
+
+
+
+I am Leo, I am 18 years old and I am from BeiJing
+I am Tom, I am 18 years old and I am from BeiJing
+
+
+</script>
+</html>

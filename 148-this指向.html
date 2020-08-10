@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>this指向</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//this指向的基本原则: 谁调的函数,函数中的this就指向谁 !!!
+	
+	var tom = {
+	    name:"Tom",
+	    sayHi:function(){
+        console.log("Hi,my name is "+this.name);
+    },
+	    say:function(){
+			(function(cb){//立即执行函数
+				cb()//这里调用cb()函数的是  window   
+			})(this.sayHi)
+		}
+}
+	
+    var name = "Leo"
+
+	tom.say()//此时的输出结果  为 Hi,my name is leo  因为上面的函数中调用cb()函数的是window对象  
+
+	/*
+	var tom = {
+    name:"Tom",
+    sayHi:function(){
+        console.log("Hi,my name is "+this.name);
+    }
+}
+	var amy = {
+	    name:"Amy",
+	    sayHi:function(){
+        var fn = tom.sayHi
+        fn()//这里是window在调用函数 
+    }
+}
+
+var username = "Leo"
+
+tom.sayHi()//输出结果  Hi,my username is Tom
+amy.sayHi()//输出结果 Hi,my username is Leo 这里是window调用而非 amy 再调用 因此this指向window
+ */
+
+
+
+
+
+
+	/*
+	var tom = {
+    username:"Tom",
+    sayHi:function(){
+        console.log("Hi,my username is "+this.username);
+    }
+}
+
+	var sayHi = tom.sayHi
+	var username = "Leo"
+
+	tom.sayHi()//输出结果 Hi,my username is Tom
+	sayHi()//输出结果  Hi,my username is leo 此时时widow调用的函数 相当于window.sayHi()，因此此时的this指向window 
+	
+	 */
+
+
+/*
+var tom = {
+    username:"Tom",
+    sayHi:function(){
+        console.log("Hi,my username is "+this.username);
+    }
+}
+	var amy = {
+    username:"Amy",
+    sayHi:tom.sayHi
+    }
+
+  
+amy.sayHi()// 输出结果  Hi,my username is Tom
+amy.sayHi()// 输出结果还是  Hi,my username is Amy 因为在这里时amy调用的函数因此this 指向amy
+
+   */
+
+	/*
+	var tom = {
+    username:"Tom",
+    sayHi:function(){
+        console.log("Hi,my username is "+this.username);
+    }
+}
+	var amy = {
+    username:"Amy",
+    sayHi:function(){
+        console.log("Hi,my username is "+this.username);
+    }
+}
+tom.sayHi()//  输出结果  Hi,my username is Tom
+amy.sayHi()// 输出结果  Hi,my username is Amy
+	*/
+</script>
+</html>

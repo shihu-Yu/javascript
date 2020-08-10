@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>动画练习-悬浮侧边栏</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		body{
+			height: 3000px;
+		}
+		#box{
+			width: 100px;
+			line-height: 300px;
+			text-align: center;
+			background-color: maroon;
+			position: absolute;
+			top:0;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">侧边栏</div>
+</body>
+<script src="143-封装函数.js"></script>
+<script type="text/javascript">
+	var elem = document.getElementById('box')
+	var timer = 0
+	window.onload = window.onscroll = window.onresize = function(){
+		timer = setTimeout(function(){
+			var target = (window.innerHeight - elem.offsetHeight) / 2 + window.pageYOffset
+			animate(elem,'top',target)
+		},50)
+	
+	}
+</script>
+</html>

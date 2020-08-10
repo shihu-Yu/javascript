@@ -25,6 +25,10 @@
             background-color: #fff;
             box-sizing: border-box;
         }
+        #top-search.show{
+            top:0;
+            transition: top .5s;
+        }
         .main{
             height: 3000px;
         }
@@ -35,7 +39,6 @@
     <div id="top-search">顶部固定搜索</div>
     <div class="main"></div>
 </body>
-<!--js/animate.js文件中保存着前面封装的动画函数animate-->
 <script>
     var timer = 0
     var topSearch = document.getElementById('top-search')
@@ -46,17 +49,21 @@
             var scrollTop = window.pageYOffset
 
             if(scrollTop >= 400 && !isShow){
-                animate(topSearch,'top',0,function(){
+
+               topSearch.className = 'show'
+               topSearch.addEventListener('transitionend',function(){
                     isShow = true
-                })
+               },false)               
+
             }
 
             if(scrollTop < 400 && isShow){
-               topSearch.style.top = '-50px'
+               topSearch.className = ''
                isShow = false 
             }
 
         },50)  
     }
 </script>
+
 </html>

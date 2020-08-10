@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>动画练习-伸缩菜单</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			height: 0;
+		}
+		#main{
+			position: absolute;
+			top: 0;
+			left: -150px;
+			width: 150px;
+			height: 300px;
+			background-color: maroon;
+		}
+		#menu{
+			position: absolute;
+			top: 0;
+			left: 150px;
+			width: 50px;
+			height: 300px;
+			background-color:rgb(123,123,0);
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<div id="menu"></div>
+	</div>
+</body>
+<script src="143-封装函数.js"></script>
+<script type="text/javascript">
+	var main = document.getElementById('main')
+
+    main.onmouseenter = function(){
+        animate(main,'left',0)
+    }
+    main.onmouseleave = function(){
+        animate(main,'left',-150)
+    }
+</script>
+</html>

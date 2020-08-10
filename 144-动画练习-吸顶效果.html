@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>动画练习-吸顶效果</title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin:0;
+	}
+	nav{
+		
+		line-height: 100px;
+		text-align: center;
+		background-color: #ccc;
+	}
+	#search-box{
+        position: fixed;
+        top:-50px;
+        left:0;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border-bottom: 2px solid #f21;
+        background-color: #fff;
+        box-sizing: border-box;
+    }
+    #main{
+     height: 3000px;
+    }
+	</style>
+</head>
+<body>
+	<nav>导航栏</nav>
+	<div id="search-box">顶部固定搜索栏</div>
+	<div id="main"></div>
+</body>
+<script src="143-封装函数.js"></script>
+<script type="text/javascript">
+	var timer = 0
+	var searchBox = document.getElementById('search-box')
+
+	var isShow = false
+	window.onscroll = function(ev){
+		clearTimeout(timer)
+		timer = setTimeout(function(){
+
+			var scrollTop = window.pageYOffset
+
+			if(scrollTop >= 400 && !isShow){
+				animate(searchBox,'top',0,function(){
+					isShow = true
+				})
+			}
+			if(scrollTop < 400 && isShow){
+              searchBox.style.top = '-50px'
+              isShow = false 
+            }
+
+		},50)
+	} 
+</script>
+</html>

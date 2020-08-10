@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>封装函数</title>
+	<title>封装函数-添加回调</title>
 	<style type="text/css">
 		*{
 	    margin: 0;
@@ -37,7 +37,7 @@
 
 	var speed = 0
 	var temer = 0
-	function animate(elem,attr,target,callback){
+	function animate(elem,attr,target){
 		clearInterval(elem.timer)
 		elem.timer = setInterval(function(){
 			var current = parseFloat(getComputedStyle(elem,false)[attr])
@@ -56,6 +56,10 @@
 					elem.style[attr]= target + 'px'
 				}
 
+				clearInterval(elem.timer)
+				typeof callback == 'function' ? callback() : null//回调函数
+
+				
 		}else{
 			if(attr == 'opacity'){
 					elem.style.opacity = (speed + current) / 100 
