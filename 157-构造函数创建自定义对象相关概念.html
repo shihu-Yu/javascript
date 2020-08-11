@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>构造函数创建自定义对象相关概念</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var date1 = new Date()//这里的两个Date是构造函数和类
+	var date2 = new Date()//在这里date1以及date2都是对象实例
+
+
+	//实例方法 格式  对象实例.方法名()  添加在构造函数的原型对象上的方法是实例方法,实例方法的调用方法是:
+	console.log(date1.getHours())//这里的getHours是 实例方法 
+
+	//静态方法 添加在构造函数上的方法是静态方法,静态方法的调用方法是 格式   构造函数.方法名()
+	console.log(Date.now())
+</script>
+</html>

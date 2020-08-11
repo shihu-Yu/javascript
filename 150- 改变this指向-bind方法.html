@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>变this指向-bind方法</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	2.1 call,apply和bind之间的区别:
+	call,apply在改变 this 指向的同时会执行函数；bind则只负责改造 this，不作任何执行操作。
+
+	2.2 call和apply之间的区别
+	call需要逐个传入参数,apply需要以数组形式传入参数
+	*/
+
+	var tom = {
+    name:"Tom"
+	}
+	function sayHi(age,city) {
+	    console.log("I am "+this.name+", I am " + age + " years old and I am from "+ city)
+	}
+
+	var name = "Leo"
+
+	sayHi(18,"BeiJing")
+	sayHi.bind(tom,18,"BeiJing")()
+	
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>模拟改变this指向函数-模拟call</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var tom = {
+    name:"Tom"
+	}
+	
+
+	//首先构造函数使其能够调用
+	Function.prototype.myCall = function(context) {
+		var context = context || window //
+		context.fn = this //相当于向context 这个对象添加了一个属性  这里的this代表的就是sayHi
+		//将context 后面的参数取出来
+		var args = [...arguments].slice(1) //[...]表示把后面的内容转化为一个数组
+		var result = context.fn(...args)//这里是调用了context 的 fn这个属性
+
+		//删除fn 
+		delete context.fn
+
+		return result
+
+	}
+	function sayHi(age,city) {
+	    console.log("I am "+this.name+", I am " + age + " years old and I am from "+ city)
+	    return 22
+
+	}
+
+	sayHi.myCall(tom,19,'shanghai')
+	//console.log(sayHi()) //查看返回值是否生效
+</script>
+</html>

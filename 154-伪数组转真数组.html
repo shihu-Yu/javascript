@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>伪数组转真数组</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	// var 真数组 = [].slice.call(伪数组)
+	var likeArr = {
+		0:'tom',
+		1:'marry',
+		2:'lilei',
+		3:'hanmeimei',
+		length:4//伪数组中必须包含这个，不然下面转化出来的是一个空数组
+	}
+	var arr = [].slice.call(likeArr)//这里的 [] 只是为了可以使用数组中的 slice 的方法
+
+	console.log(likeArr)
+	console.log(arr)
+</script>
+</html>

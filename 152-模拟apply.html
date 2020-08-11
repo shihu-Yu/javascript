@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>模拟apply</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var tom = {
+    name:"Tom"
+	}
+	function sayHi(age,city) {
+	    console.log("I am "+this.name+", I am " + age + " years old and I am from "+ city)
+	  return 555
+	}
+
+
+	//首先构造函数使其能够调用
+	Function.prototype.myApply = function(context) {
+		var context = context || window //
+		context.fn = this //相当于向context 这个对象添加了一个属性
+		//将context 后面的参数取出来
+		var args = arguments[1]//这里是通过获取参数下标来获取后面的参数 ，因为apply方法相当于只有两个参数 一个是传入对象 ，另一个是被数组包裹的参数
+		var result;
+		if(args){
+			result = context.fn(...args)//当传入第一个参数时执行，调用myApply方法
+		}else{
+			result = context.fn()//当没有传入第一个参数时
+		}
+		
+
+		//删除fn 
+		delete context.fn
+
+		return result
+	}
+
+	sayHi.myApply(tom,[19,'shanghai'])
+	//console.log(sayHi()) //查看返回值是否生效
+	
+</script>
+</html>

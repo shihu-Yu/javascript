@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>真数组转伪数组</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//格式  var 数组个数 = [].push.apply(伪数组,真数组)
+	var arr =[50,20,13,14,16,25,16]
+
+	var likeArr = {};
+	[].push.apply(likeArr,arr)
+
+	//var len = 	[].push.apply(likeArr,arr)
+	//console.log(len)//返回值len为数组的的长度
+	console.log(likeArr)
+	
+</script>
+</html>

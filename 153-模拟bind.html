@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>模拟bind</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var tom = {
+    name:"Tom"
+	}
+	function sayHi(age,city) {
+	    console.log("I am "+this.name+", I am " + age + " years old and I am from "+ city)
+	  return 555
+	}
+	Function.prototype.myBind = function(context) {
+		var context = context || window //
+		context.fn = this //相当于向context 这个对象添加了一个属性 这里的fn 相当于是saiHi
+		
+		var args = [...arguments].slice(1)//  获取context后面的参数
+
+		return function(){
+			return fn.apply(context,args)
+		}	
+	}
+
+	sayHi.myBind(tom,19,'shanghai')()
+	console.log(sayHi())
+</script>
+</html>
