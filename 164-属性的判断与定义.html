@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>属性的判断与定义</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function Person(name,age){
+		this.name = name
+		this.age = age
+	}
+
+	Person.prototype = {
+		constructor:Person,
+		sayHi:function(){
+
+			console.log('I am '+this.name + ',I am ' + this.age + 'years old')
+		},
+		LEGS:2
+	}
+	var p1 = new Person('tom',20)
+	//判断对象实例上是否有自己实例上指定的属性
+	console.log(p1.hasOwnProperty('name'))//自身拥有name 属性因此输出结果为 true 
+	console.log(p1.hasOwnProperty('LEGS'))//自身没有LEGS 属性因此输出结果为 false
+	
+	//判断对象实例的原型链上是否有指定的属性
+	
+
+	//判断属性只在原型上有的属性
+q
+
+
+</script>
+</html>

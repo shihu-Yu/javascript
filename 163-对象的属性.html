@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>对象的属性</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function Person(name,age){
+		this.name = name
+		this.age = age
+	}
+
+	Person.prototype = {
+		constructor:Person,
+		sayHi:function(){
+
+			console.log('I am '+this.name + ',I am ' + this.age + 'years old')
+		},
+		LEGS:2
+	}
+	var p1 = new Person('tom',20)
+	p1.sayHi()
+	console.log(p1.xxx)//当整个原型链上都没有这个属性是  返回结果是undefined
+	var p2 = new Person()
+</script>
+</html>

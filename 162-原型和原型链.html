@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>原型和原型链</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function Person(name,age){
+		this.name = name
+		this.age = age
+	}
+
+	Person.prototype = {
+		constructor:Person,
+		sayHi:function(){
+			console.log('I am '+this.name + ',I am ' + this.age + 'years old')
+		}
+	}
+	//console.log(Person.prototype)
+
+	var p1 = new Person('tom',20)
+	//p1.sayHi()
+	//console.log(p1)
+	//p1.name = 'amy'
+	p1.sayHi()
+	var p2 = new Person('lilei',21)
+	p2.sayHi()
+	//console.log(p2)
+
+</script>
+</html>
