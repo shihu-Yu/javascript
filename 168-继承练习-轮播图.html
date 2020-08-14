@@ -15,18 +15,60 @@
 	}
 	.wrap .list{
 		list-style: none;
-		
+
 	}
-	.wrap .list .items{
+	.wrap.fade .list  .items{
 		position: absolute;
 		top: 0;
 		left: 0; 
 		opacity: 0;
 		transition: opacity .3s;
 	}
-	.wrap .list .show{
+	.wrap.fade .list .items.show{
 		opacity: 1;
 	}
+/* -------滑入滑出移动效果-------*/
+	
+	.wrap.slide .carouselImgs{
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.wrap.slide .items{
+		left: 100%;
+	}
+	.wrap.slide .itmes.show{
+		left: 0;
+	}
+	.wrap.slide .itmes.hide-left{
+		left: -100%;
+	}
+	.wrap.slide .itmes.hide-right{
+		left: 100%;
+	}
+	.wrap.slide .list.move-left{
+		animation: moveLeft 0.3s;
+	}
+	.wrap.slide .list.move-right{
+		animation: moveRight 0.3s;
+	}
+
+	@keyframes moveLeft{
+		from{
+			left: 0;
+		}to{
+			left: -100%;
+		}
+	}
+	@keyframes maveRight{
+		from{
+			left: 0;
+		}to{
+			left: 100%;
+		}
+	}
+
+/*-----滑入滑出移动效果---------*/
 	.wrap .list li img{
 	    width: 100%;
 	    height: 100%;
@@ -83,6 +125,8 @@
 	 <div class="wrap" id="wrap"></div>
 </body>
 <script type="text/javascript">
+
+	//父类  淡入淡出效果
 	function Carousel(options){
 		console.log(this)
 		this.wrap = document.getElementById(options.id)
@@ -107,7 +151,7 @@
 	Carousel.prototype = {
 		constructor:Carousel,
 		init:function(){
-			this.wrap.className = 'wrap'
+			this.wrap.className = 'wrap fade'
 			this.wrap.style.width = this.width + 'px'
 			this.wrap.style.height = this.height + 'px'
 			this.carouselImgs = document.createElement('ul')
@@ -127,7 +171,7 @@
 				btn.index = i
 			
 				if(this.activeIndex == i){
-					carouselItem.className = 'show items'
+					carouselItem.className = 'show items '
 					btn.className = 'active'
 				}else{
 					carouselItem.className = 'items'
@@ -198,7 +242,51 @@
 		 	}.bind(this)
 		 }
 	}
-	new Carousel({
+
+
+	//子类  滑入滑出效果
+	function SlideCarousel(options){
+		Carousel.call(this,options)
+	}
+	SlideCarousel.prototype = Object.create(Carousel.prototype)
+
+	Object.defineProperty(Carousel.prototype,'constructor',{
+		value:SlideCarousel
+	})
+
+	SlideCarousel.prototype.init = function(){
+		Carousel.prototype.init.call(this)
+		this.wrap.className = 'wrap slide'
+	}
+
+	SlideCarousel.prototype.tab = function(){	
+		var carouselImgsChildren = this.carouselImgs.children
+		var btnsChildren = this.btns.children
+
+		//1.  确定滑动的方向
+
+		var direction = 1
+		if()
+
+
+	}
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	new SlideCarousel({
 		id:'wrap',
 		imgs:[
 			'./images/l-001.jpg',
@@ -207,7 +295,7 @@
 		],
 		width:520,
 		height:280,
-		playInterval:2000    
+		//playInterval:2000    
 	})
 </script>
 </html>
