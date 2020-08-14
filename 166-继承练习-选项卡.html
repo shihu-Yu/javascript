@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>选项卡</title>
+    <title>继承练习-选项卡</title>
     <style>
         *{
             margin: 0;
@@ -76,11 +76,11 @@
 			for(var i=0 ,len = this.tabs.length;i<len;i++){
 				this.tabs[i].index = i
 				this.tabs[i].onclick = function(){
-					_this.handleClick(this)
+					_this.handleTab(this)
 				}
 			}
 		},
-		handleClick:function(elem){
+		handleTab:function(elem){
 			this.tabs[this.activeIndex].className = ''
 			this.contents[this.activeIndex].style.display = 'none'
 
@@ -91,7 +91,41 @@
 		}
 	}
 
-	
-	new Tab('.wrap .tabs li','.wrap .contents li')
+    function EnterTab(tabsSelector,contentsSelector){
+        Tab.call(this,tabsSelector,contentsSelector)
+    }
+    EnterTab.prototype = Object.create(Tab.prototype)//这里是创建了一个对象
+    Object.defineProperty(Tab.prototype,'constructor',{
+        value:EnterTab,
+    })
+    /*
+    这里不能使用 
+    EnterTab.prototype =  {
+        bindEvent:function(){
+            var _this = this
+            for(var i=0 ,len = this.tabs.length;i<len;i++){
+                this.tabs[i].index = i
+                this.tabs[i].onmouseenter = function(){
+                _this.handleTab(this)
+            }
+        }
+    }
+ }
+  这样做相当于重新建立了一个对象把前面    EnterTab.prototype = Object.create(Tab.prototype)创建的对象给覆盖掉了此时子类的原型对像根本没有指向父类的原型对象
+    */
+    EnterTab.prototype.bindEvent = function(){
+        var _this = this
+            for(var i=0 ,len = this.tabs.length;i<len;i++){
+                this.tabs[i].index = i
+                this.tabs[i].onmouseenter = function(){
+                _this.handleTab(this)
+            }
+        }
+    }
+    
+
+
+	new EnterTab('.wrap .tabs li','.wrap .contents li')
+    //new Tab('.wrap .tabs li','.wrap .contents li')
 </script>
 </html>

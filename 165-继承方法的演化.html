@@ -8,7 +8,210 @@
 
 </body>
 <script type="text/javascript">
+	//继承一
+	/*
+	function 子类(属性1,属性2,属性3){
+    父类.call(this,属性1,属性2);//属性的继承
+    this.属性3 = 属性3; //子类的属性
+	}
 	
+	子类.prototype = 父类.prototype; //方法的继承
+	子类.prototype.方法 = function(){} //子类的方法
+	
+	*/
+
+	//继承二
+
+	/*
+	 //定义一个父类  
+	  
+    function Person(name,age){
+        this.name = name
+        this.age = age
+    }    
+    Person.prototype = {
+        showName:function(){
+            console.log('I am '+ this.name)
+        }
+    }
+    //父类的原型对象的constructor定义为不可枚举,防止子类继承
+    /*
+    Object.defineProperty(Person.prototype,'constructor',{
+        value:Person
+    })
+	*/
+    //父类的原型对象的方法定义为不可枚举,导致子类继承不到
+    /*
+    Object.defineProperty(Person.prototype,'showAge',{
+        value:function(){
+            console.log('I am ' + this.age + ' years old')
+        }
+    })
+	*/
+
+
+	/*
+    var p1 = new Person('Tom',18)
+    //定义一个子类
+    function Student(name,age,major){
+        //调用父类的构造函数,并将子类的对象做为父类构造函数调用时的this来继承父类的属性
+        Person.call(this,name,age)
+        //子类自己的属性
+        this.major = major
+    }
+
+    //将父类原型对象上的属性循环遍历动态添加到子类的原型对象上
+    for(var attr in Person.prototype){
+        Student.prototype[attr] = Person.prototype[attr]
+    }
+
+    //添加子类自己的方法
+    Student.prototype.showMajor = function(){
+        console.log('I am come from ' + this.major)
+    }
+    var s1 = new Student('Amy','20','Computer')
+    s1.showName()
+
+    //子类实例可以调用自己的方法
+    s1.showMajor()//I am come from Computer
+
+    //子类的方法添加到了子类自己的原型对象上,父类的实例访问不到
+    //p1.showMajor()//p1.showMajor is not a function
+
+     */
+    //继承三
+
+    /*
+
+    function Person(name,age){
+        this.name = name
+        this.age = age
+    }    
+    Person.prototype = {
+        showName:function(){
+            console.log('I am '+ this.name)
+        }
+    }
+    var p1 = new Person('Tom',18)
+    //定义一个子类
+    function Student(name,age,major){
+        //调用父类的构造函数,并将子类的对象做为父类构造函数调用时的this来继承父类的属性
+        Person.call(this,name,age)
+        //子类自己的属性
+        this.major = major
+    }
+    //让子类指向父类的一个实例
+
+    Student.prototype = new Person()
+
+
+    Object.defineProperty(Student.prototype,'constructor',{
+    	value:Student
+    })
+
+
+
+    Student.prototype.showMajor = function(){
+        console.log('I am come from ' + this.major)
+    }
+    var s1 = new Student('Amy','20','Computer')
+    s1.showName()
+
+
+    console.log(s1)
+    //子类实例可以调用自己的方法
+
+    s1.showMajor()//I am come from Computer
+
+   // p1.showMajor()//此时的父类实例无法调用子类实例上的属性和方法
+
+	*/
+
+	//继承四
+	/*
+	function 子类(属性1,属性2,属性3){
+    父类.call(this,属性1,属性2);//属性的继承
+    this.属性3 = 属性3; //子类的属性
+	}
+	//方法的继承
+	子类.prototype = Object.create(父类.prototype);
+	//添加一个不可枚举的子类构造函数
+	Object.defineProperty(子类.prototype,'constructor',{
+	    value:子类
+	})
+	子类.prototype.方法 = function(){} //子类的方法 
+
+
+
+
+	*/
+	  //定义一个父类    
+    function Person(name,age){
+        this.name = name
+        this.age = age
+    }    
+    Person.prototype = {
+        showName:function(){
+            console.log('I am '+ this.name)
+        }
+    }
+    //父类的原型对象的constructor定义为不可枚举,防止子类继承
+    Object.defineProperty(Person.prototype,'constructor',{
+        value:Person
+    })
+
+    //父类的原型对象的方法定义为不可枚举,导致子类继承不到
+    Object.defineProperty(Person.prototype,'showAge',{
+        value:function(){
+            console.log('I am ' + this.age + ' years old')
+        }
+    })
+
+    var p1 = new Person('Tom',18)
+    //定义一个子类
+    function Student(name,age,major){
+        //调用父类的构造函数,并将子类的对象做为父类构造函数调用时的this来继承父类的属性
+        Person.call(this,name,age)
+        //子类自己的属性
+        this.major = major
+    }
+
+    //Object.create(Person.prototype)创建一个对象,该对象没有任何额外的属性,该对象的__proto__指向Person.prototype
+
+   	//obj = Object.create(null)
+    //使用Object.create()创建的对象只是一个空对象
+    //console.log(obj)
+
+    Student.prototype = Object.create(Person.prototype)
+
+    //添加子类原型对象的constructor
+    
+    Object.defineProperty(Student.prototype,'constructor',{
+        value:Student
+    })
+
+
+    //添加子类自己的方法
+
+    Student.prototype.showMajor = function(){
+        console.log('I am come from ' + this.major)
+    }
+
+    var s1 = new Student('Amy','20','Computer')  
+
+
+     console.log(Student.prototype)  
+    //子类实例可以调用父类的方法 
+    s1.showName()//I am Amy
+    s1.showAge()//s1.showAge is not a function
+
+    //子类实例可以调用自己的方法
+    s1.showMajor()//I am come from Computer
+
+    //子类的方法添加到了子类自己的原型对象上,父类的实例访问不到
+    //p1.showMajor()//p1.showMajor is not a function此时父类的实例无法调用子类上的方法
+	
+
 </script>
 </html>
 
