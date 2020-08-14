@@ -23,14 +23,45 @@
 	}
 	var p1 = new Person('tom',20)
 	//判断对象实例上是否有自己实例上指定的属性
-	console.log(p1.hasOwnProperty('name'))//自身拥有name 属性因此输出结果为 true 
-	console.log(p1.hasOwnProperty('LEGS'))//自身没有LEGS 属性因此输出结果为 false
+	//console.log(p1.hasOwnProperty('name'))//自身拥有name 属性因此输出结果为 true 
+	//console.log(p1.hasOwnProperty('LEGS'))//自身没有LEGS 属性因此输出结果为 false
 	
-	//判断对象实例的原型链上是否有指定的属性
+	//判断对象实例的原型链上是否有指定的属性"LEGS" in obj1;
+	console.log('LEGS' in p1)//true
+	console.log('sayHi' in p1)//true
+	//判断属性只在原型上有的属性return !obj.hasOwnProperty(name) && (name in obj);
+	console.log(!p1.hasOwnProperty(name) && (name in p1))//此处的输出结果为false
+	
+	//定义单个属性
+	/*
+	Object.defineProperty(对象,属性名,{
+    value:属性值,
+    enumerable:true,//是否可以枚举,默认是false
+    writable:true,//是否可写(赋值),默认是false
+    configurable:true//是否可删除,是否可以修改属性的权限，默认是false
+});
+    */
+	 
+	Object.defineProperty(p1,'FOOT',{//属性名称要加双引号
+		value:2,
+		enumerable:true,
+		writable:true,
+		configurable:true,
+	})
+	//p1.FOOT = 4//如果上面的whitable没有定义默认为false 这行代码不会生效
+	//delete p1.FOOT//如果上面的configurable没有定义或者属性值为false，这行代码就不会生效，只有为true时才可以修改删除
+	console.log(p1)
+	console.log(p1.FOOT)
+	//定义多个属性
+	/*
+	Object.defineProperty(对象，{
+		属性名1：{value:属性值，writable:true},
+		属性名2：{value:属性值，writeble:true},
+	})
 
-
-	//判断属性只在原型上有的属性
-
+	*/
+	//查看属性权限  Object.getOwnPropertyDescriptor(对象,属性名)
+	console.log(Object.getOwnPropertyDescriptor(p1,'FOOT'))//这里的属性名一定要加引号 ''
 
 
 </script>
