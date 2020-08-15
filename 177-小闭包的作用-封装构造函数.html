@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>小闭包的作用-封装构造函数</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	(function(w){
+		function Person(name,age){
+			this.name = name 
+			this.age = age 
+		}
+		Person.prototype = {
+			constructor:Person,
+			showName:function(){
+				console.log('I am ' + this.name)
+			},
+			showAge:function(){
+				console.log('I am ' + this.age + ' years old ')
+			}
+		}
+		w.Person = Person //把 Person 函数赋值给window对象上
+		
+	})(window);//把window作为参数传入进去 使得Person函数挂在 window 对象上
+
+	//console.log(window)
+	var s1 = new Person('李雷','20')
+	s1.showName()
+	s1.showAge()
+</script>
+</html>

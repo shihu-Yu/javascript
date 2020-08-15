@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>小闭包-概念</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*//小闭包 也叫立即执行函数
+	(function(形参){
+
+    //这里相当于块级作用域
+
+	})(实参);
+	*/
+	(function(){
+		var a =  2
+		console.log(a)
+	})();//当有两个或者以上的小闭包时要使用 ;   隔开 否则会报错
+
+	//也可以在这个前面使用 + 或者 - 或者 ; 号隔开两个小闭包
+	/*
+	+(function(){
+
+	})()
+
+	-(function(){
+	
+	})()
+	
+	;(function(){
+	
+	})()
+
+
+	*/
+
+
+</script>
+</html>

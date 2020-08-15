@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>小闭包作用-模拟私有属性</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	function User(name,password){
+		this.name = name
+		this.password = password
+	}
+	User.prototype.login = function(){
+		console.log('name = ' + this.name + ' password = ' + this.password)
+	}
+
+	var user = new User('tom','123456')
+	user.login()
+	
+	*/
+
+	var User = (function(){
+		var _password;
+		function User(name,password){
+			this.name = name
+			_password = password
+		}
+		User.prototype.login = function(){
+			console.log('name = ' + this.name + ' password = ' + _password)
+		}
+		return User
+	})()
+
+	var user = new User('tom','123456')
+	user.login()
+
+	console.log(user.password)
+	console.log(user._password)
+	/*
+	上面的代码中我们用小闭包创建了一个闭包的作用域环境,在这个环境中我们定义了一个变量_password,在这个小闭包的内部login方法访问了这个属性，最后我们返回这个User构造函数。
+
+	这个闭包的作用域有效的保护了属性password和_password.
+
+	资料下载
+	*/
+
+</script>
+</html>

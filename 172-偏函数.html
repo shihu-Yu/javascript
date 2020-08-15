@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>偏函数</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//偏函数
+	function generateEmployee(city){
+		return function(department,name){
+			return city + department + name
+		}
+	}
+
+	var generateBeijingEmployee = generateEmployee('北京')
+
+	var s1 = generateBeijingEmployee ('销售部','李四')
+	console.log(s1)
+</script>
+</html>

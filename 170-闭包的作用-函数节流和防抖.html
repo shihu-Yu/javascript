@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>闭包的作用-函数节流和防抖</title>
+	<style type="text/css">
+		body{
+			height: 3000px;
+			overflow: scroll;
+		}
+	</style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//节流
+	/*
+	function throttle(fn,interval){
+		var lastTime = Date.now()
+
+		return function(){
+			var currentTime = Date.now()
+			if(currentTime - lastTime > interval){
+				fn()
+				lastTime = Date.now()
+			}
+		}
+	}
+	var i = 0
+	var fn = throttle(function(){
+		console.log("第"+ (++i) +"次触发事件")
+	},1000)
+	document.addEventListener('scroll',fn,false)
+*/
+
+
+	//防抖
+	function debounce(fn,delay){
+		var timer = 0
+		return function(){
+			if(timer){
+				clearTimeout(timer)
+			}
+			timer = setTimeout(fn,delay)
+		}
+
+	}
+	var i = 0
+	var fn = debounce(function(){
+		console.log("第"+ (++i) +"次触发事件")
+	},1000)
+	document.addEventListener('scroll',fn,false)
+</script>
+</html>

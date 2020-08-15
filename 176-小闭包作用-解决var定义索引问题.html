@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>小闭包作用-解决var定义索引问题</title>
+	<style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            width: 960px;
+            margin:50px auto;
+        }
+        li{
+            list-style: none;
+        }
+        .tabs{
+            display: flex;
+            flex-direction: row;
+            border-bottom: 1px solid #F9002B;
+            background-color: #ccc;
+        }
+        .tabs li{
+            cursor: pointer;
+            width: 100px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .tabs li:hover{
+            color:#F9002B;
+        }
+        .tabs li.active{
+            color: #fff;
+            background-color: #F9002B;
+        }
+        .contents li{
+            display: none;
+            line-height: 400px;
+            text-align: center;
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+  <div class="wrap">
+        <ul class="tabs">
+            <li class="active">商品介绍</li>
+            <li>规格与包装</li>
+            <li>售后保障</li>
+            <li>商品评价</li>
+        </ul>
+        <ul class="contents">
+            <li style="display: block;">商品介绍的内容</li>
+            <li>规格与包装的内容</li>
+            <li>售后保障的内容</li>
+            <li>商品评价的内容</li>
+        </ul>
+    </div>	
+</body>
+<script type="text/javascript">
+	  var tabs = document.querySelectorAll('.tabs li')
+    var contents = document.querySelectorAll('.contents li')
+    var len = tabs.length;
+    var lastActiveIndex = 0
+    //for(var i  = 0;i<len;i++){
+    	/*
+        tabs[i].index = i
+        tabs[i].onclick = function(){
+
+     
+            for(var j = 0;j<len;j++){
+                tabs[j].className = ''
+                contents[j].style.display = 'none'
+            }
+    
+
+            //对上面循环处理的优化
+            tabs[lastActiveIndex].className = ''
+            contents[lastActiveIndex].style.display = 'none'  
+
+            this.className = 'active'           
+            contents[this.index].style.display = 'block'
+
+            lastActiveIndex = this.index
+        }
+        */
+
+        //利用小闭包实现var 的赋值
+        for(var i  = 0;i<len;i++){//每次循环都会传入一次 i 值 在此次的循环结束之前 i 值是不会变化的 直至下次 循环传入新的 i 值
+        (function(i){
+
+        tabs[i].onclick = function(){
+        tabs[lastActiveIndex].className = ''
+            contents[lastActiveIndex].style.display = 'none'  
+
+            this.className = 'active'           
+            contents[i].style.display = 'block'
+
+            lastActiveIndex = i
+     	}
+
+    })(i);
+	    /*在上述代码中，我们首先使用了立即执行函数将 i 传入函数内部，这个时候值就被固定在了参数 i上面不会改变，当下次执行 onclick 回调函数这个闭包的时候，就可以使用外部函数的变量 i，从而达到在循环中直接找到元素的索引的目的。
+
+		这个过程可以理解为利用小闭包模拟了一个块级作用域。*/
+
+}
+</script>
+</html>

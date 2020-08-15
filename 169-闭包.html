@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>闭包的作用-访问函数内部的变量</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function fn(){
+		var n =1
+
+		add = function(){//这里的add 是一个全局变量
+			n++
+		}
+
+		return function(){//这个匿名函数就是闭包，在这其中返回函数内部的变量n
+			return n
+		}
+	}
+	console.log(fn())//这里调用的输出结果是返回了函数
+
+	var result = fn()
+
+	console.log(result())//通过闭包获取到了fn()函数内部 n 的值
+
+	add()
+
+	console.log(result())//输出结果为2 再次获取变量函数fn内部的值，值发生了变化 ，说明获取的值始终保持在内存中
+
+</script>
+</html>

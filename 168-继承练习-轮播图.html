@@ -250,7 +250,7 @@
 	}
 	SlideCarousel.prototype = Object.create(Carousel.prototype)
 
-	Object.defineProperty(Carousel.prototype,'constructor',{
+	Object.defineProperty(SlideCarousel.prototype,'constructor',{
 		value:SlideCarousel
 	})
 
@@ -278,28 +278,39 @@
 		var carouselImgsChildren = this.carouselImgs.children
 		var btnsChildren = this.btns.children
 		var hideClassname = 'itmes hide-left'
-		var moveClassname = 'itmes move-right'
+		var moveClassname = 'list move-right'
 		if(direction == -1){
 			hideClassname = 'itmes move-right'
-			moveClassname = 'itmes hide-left'
+			moveClassname = 'list hide-left'
 		}
+		for(var i = 0; i < this.len;i++){
+			if(i != this.activeIndex){
+				//除了当前显示的其余的全部隐藏
+				carouselImgsChildren[i].className = hideClassname
+			}
+			if(i == this.now){
+				carouselImgsChildren[i].style.zIndex = 99
+			}else{
+				carouselImgsChildren[i].style.zIndex = 0
+			}
+		}
+		//3.执行滑动
+		this.carouselImgs.className = moveClassname
+
+		//4.滑动结束后为下一次滑动做准备
+		this.carouselImgs.addEventListener('animationend',function(){
+
+			this.carouselImgs.className = 'list'
+			carouselImgsChildren[this.activeIndex].className = 'items'
+			carouselImgsChildren[this.now].className = 'items show'
+
+			btnsChildren[this.activeIndex].className = ''
+			btnsChildren[this.now].className = 'active'
+
+			this.activeIndex = this.now
+		}.bind(this),false)
+
 	}
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	new SlideCarousel({
 		id:'wrap',
 		imgs:[
@@ -309,7 +320,7 @@
 		],
 		width:520,
 		height:280,
-		//playInterval:2000    
+		playInterval:2000    
 	})
 </script>
 </html>

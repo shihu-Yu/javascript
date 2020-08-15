@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>闭包的作用-函数的柯里化</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//
+	/*
+	function generateEmployee(city,department,name){
+		return city + department + name
+	}
+
+	var a = generateEmployee('bejing','技术部','lilei')
+
+	console.log(a)
+	*/
+
+	
+	function generateEmployee(city){
+		return function(department){
+			return function(name){
+				return city + department + name
+			}
+		}
+	}
+
+	var generateBeijingEmployee = generateEmployee('北京')
+
+	console.log(generateBeijingEmployee('销售部')('张三'))
+
+
+	var generateBeijingSellEmployee = generateEmployee('北京')('销售部')
+	var s1 = generateEmployee('北京')('销售部')('李四')
+	console.log(s1)
+</script>
+</html>
