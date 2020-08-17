@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>工厂模式</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//简单工厂模式
+	function Student(){
+
+	}
+	function Worker(){
+
+	}
+
+	function Teacher(){
+
+	}
+
+	function factory(type){
+		switch(type){
+			case 'Student':
+				return new Student()
+				break
+			case 'Worker':
+				return new Worker()
+				break
+			case 'Teacher':
+				return new Teacher()
+				break
+			default:
+			return null
+		}
+	}
+
+	var a = factory('Student')
+	console.log(a)
+
+</script>
+</html>

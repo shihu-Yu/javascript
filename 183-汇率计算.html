@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>汇率计算</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	(function(w){
+		function Local(name,value){
+			this.name = name
+			this.pElem = null
+			this.init()
+			this.bindEvent()
+		}
+		Local.prototype = {
+			constructor:Local,
+			init:function(name){
+				var pElem = document.createElement('p')
+				var inputElem = document.createElement('input')
+				pElem.innerHTML = this.name + ' : '
+				pElem.appendChild(inputElem)
+				document.body.appendChild(pElem)
+			},
+			register:function(foreign){
+				this.foreigns.push(foreign)
+			},
+			publish:function(){
+				for(var i = 0,len = foreigns.lengt;i<len;i++){
+					this.foreigns[i].listen()
+				}
+
+			}
+
+		}
+
+		w.Local = Local
+	})(window);
+
+
+	(function(w){
+		function Foreign(name,rate,local){
+			this.name = name 
+
+		}
+		Foreign.prototype = {
+			constructor:Foreign,
+			init:function(){
+				var pElem = document.createElement('p')
+				var spanElem = document.createElement('span')
+				pElem.innerHTML = name + ' : '
+				pElem.appendChild(spanElem)
+				document.body.appendChild(pElem)
+			},
+			listen:function(val){
+				this.spanElem.innerHTML = 
+			}
+
+		}
+		w.Foreign = Foreign
+	})(window);
+
+
+	var cny = new Local('人民币cny')
+	var usd = new Foreign('美元usd',cny)
+
+</script>
+</html>
