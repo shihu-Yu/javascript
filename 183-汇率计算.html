@@ -7,64 +7,67 @@
 <body>
 
 </body>
-<script type="text/javascript">
+<script>
 	(function(w){
-		function Local(name,value){
-			this.name = name
-			this.pElem = null
-			this.init()
+		function Local(name){
+			this.inputElem = null
+			this.init(name)
+			this.foreigns = []
 			this.bindEvent()
 		}
 		Local.prototype = {
 			constructor:Local,
 			init:function(name){
 				var pElem = document.createElement('p')
-				var inputElem = document.createElement('input')
-				pElem.innerHTML = this.name + ' : '
-				pElem.appendChild(inputElem)
+				pElem.innerHTML = name + " : "
+				this.inputElem = document.createElement('input')
+				pElem.appendChild(this.inputElem)
 				document.body.appendChild(pElem)
 			},
 			register:function(foreign){
-				this.foreigns.push(foreign)
+					this.foreigns.push(foreign)
 			},
 			publish:function(){
-				for(var i = 0,len = foreigns.lengt;i<len;i++){
-					this.foreigns[i].listen()
+				for(var i = 0,len=this.foreigns.length;i<len;i++){
+					this.foreigns[i].listen(this.inputElem.value)
 				}
-
+			},
+			bindEvent:function(){
+				this.inputElem.oninput = function(){
+					this.publish()
+				}.bind(this)
 			}
-
 		}
-
 		w.Local = Local
 	})(window);
 
 
 	(function(w){
 		function Foreign(name,rate,local){
-			this.name = name 
-
+			this.rate = rate
+			this.spanElem = null
+			local.register(this)
+			this.init(name)
 		}
 		Foreign.prototype = {
 			constructor:Foreign,
-			init:function(){
+			init:function(name){
 				var pElem = document.createElement('p')
-				var spanElem = document.createElement('span')
-				pElem.innerHTML = name + ' : '
-				pElem.appendChild(spanElem)
+				pElem.innerHTML = name + " : "
+				this.spanElem = document.createElement('span')
+				pElem.appendChild(this.spanElem)
 				document.body.appendChild(pElem)
 			},
 			listen:function(val){
-				this.spanElem.innerHTML = 
+				this.spanElem.innerHTML = val / this.rate
 			}
-
 		}
 		w.Foreign = Foreign
 	})(window);
 
-
-	var cny = new Local('人民币cny')
-	var usd = new Foreign('美元usd',cny)
-
+	var cny = new Local('人命币cny')
+	var usd = new Foreign('美元usd',6.9385,cny)
+	var jpy = new Foreign('日元jpy', 0.0652,cny)
 </script>
+			
 </html>

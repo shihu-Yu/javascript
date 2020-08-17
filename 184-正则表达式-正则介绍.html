@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式-正则介绍</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var str = 'good 12 345 hello 34 yes23';
+    var result = [];
+    var tmp = '';
+    for(var i = 0,len=str.length;i<len;i++){
+        if(!isNaN(parseInt(str.charAt(i)))){
+            tmp += str.charAt(i);
+        }else{
+            if(tmp){
+                result.push(tmp);
+                tmp = '';
+            }
+        }
+    }
+    if(tmp){
+        result.push(tmp);
+    }
+    console.log(result);
+
+    console.log(str.match(/\d+/g))
+</script>
+</html>

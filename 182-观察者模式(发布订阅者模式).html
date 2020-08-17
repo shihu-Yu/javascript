@@ -10,7 +10,7 @@
 <script type="text/javascript">
 	(function(w){
 		function Teacher(name){
-			this.name = name
+			this.name = name 
 			this.students = []
 		}
 		Teacher.prototype = {
@@ -35,7 +35,7 @@
 		Student.prototype = {
 			constructor:Student,
 			listen:function(task){
-				console.log(this.name + '收到' + task)
+				console.log(this.name + '收到作业' + task)
 			}
 		}
 		w.Student = Student
