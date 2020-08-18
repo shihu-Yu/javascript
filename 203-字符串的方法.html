@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>字符串的方法</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//str.search(reg)
+	/*从字符中检索与正则相匹配的字符串，返回第一个匹配结果的索引，查不到返回-1
+	search方法不执行全局匹配，它会忽略g，并且总是从字符串开始检索
+	*/
+	/*
+	var str = 'good boy,have a good day'
+	console.log(str.search(/good/))// 输出结果是0
+	console.log(str.search(/good/g))// 输出结果依旧是0，该方法忽略全局匹配
+	console.log(str.search(/a/))//输出结果为 10 
+	console.log(str.search(/f/))//输出结果为  -1  字符串内没有 f 因此输出-1
+ 	*/
+
+
+ 	//5. str.match(reg)
+ 	/*
+	找到字符串中的所有匹配的字符串，如果没有匹配的话返回null，有的话返回一个数组，数组中的每一项就是一个匹配结果，数组中没有index ,input 和group等属性，全局不需要分组
+ 	*/
+ 	//全局匹配
+ 	var str = 'today is 2020-08-18,tow is 2020-08-19'
+ 	//var reg = /\d{4}-\d{2}-\d{2}/
+ 	console.log(str.match(/\d{4}-\d{2}-\d{2}/)) //["2020-08-18", index: 9, input: "today is 2020-08-18,tow is 2020-08-19", groups: undefined]
+ 	console.log(str.match(/\d{4}-\d{2}-\d{2}/g))//["2020-08-18", "2020-08-19"]
+
+ 	//非全局匹配
+ 	var reg = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/
+ 	console.log(str.match(reg))//  ["2020-08-18", "2020", "08", "18", index: 9, input: "today is 2020-08-18,tow is 2020-08-19", groups: {day: "18", month: "08", year: "2020"}]
+
+</script>
+</html>

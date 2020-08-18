@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>字符串对象方法</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	// 1. str.split(reg)根据匹配规则的内容把字符串分割成数组
+	var str = 'abcef'
+	console.log(str.split('')) //["a", "b", "c", "e", "f"]
+	console.log('abcef'.split('')) //["a", "b", "c", "e", "f"]
+	//判断是否是回文字符串 类似 'abcba' 这样的字符串就是回文字符串 reverse()反转数组
+	//str == str.split('').reverse().join('') 判断是否是回文字符串
+	var str1 = 'abcba'
+	console.log(str1.split('').reverse())//["a", "b", "c", "b", "a"]
+	console.log(str1 == str1.split('').reverse().join(''))// true
+
+	//2.    str.replace(reg,str2) 把字符串str中匹配到正则的子串用str2进行替换并返回替换后的字符串,原字符串不变
+ 	console.log(str.replace(/[a-z]{5}/g,'ghmln'))// ghmln 返回的是替换后的字符串
+ 	console.log(str)// abcef 原字符串不变
+
+ 	*/
+ 	//3.  str.replace(reg,function(匹配结果,index,原值))
+
+ 	var str = 'a1b2c3d4'.replace(/\d/g,function(match,index,origin){
+ 		//console.log(match,index,origin)
+    	return parseInt(match)*10;
+})
+	console.log(str);//a10b20c30d40
+
+</script>
+</html>

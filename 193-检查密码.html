@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>检查密码</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">检查密码</button>
+</body>
+<script type="text/javascript">
+	var txt = document.getElementById('txt')
+	var btn = document.getElementById('btn')
+	//  密码(以字母开头,长度在6~12之间,只能包含字母、数字和下划线)
+	var reg = /^[a-zA-Z]\w{5,11}$/g
+	btn.onclick = function(){
+		var str = txt.value
+		if(reg.test(str)){
+			alert('合法')
+		}else{
+			alert('不合法')
+		}
+	}
+
+
+</script>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>匹配模式</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//默认的是贪婪模式
+	//尽可能多的匹配，这是正则的默认匹配模式
+	var str = '123456'
+	console.log(str.replace(/\d{2,4}/,'*'))//此时输出结果为*56
+
+
+	//非贪婪模式  尽可能少的匹配,在量词后添加?号就把匹配模式变为非贪婪模式
+	console.log(str.replace(/\d{2,4}?/,'*'))//此时的输出结果为 *3456
+</script>
+</html>

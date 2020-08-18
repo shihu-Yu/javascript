@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>边界控制</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	边界控制符	作用
+		^		匹配字符串开始的位置,限制必须以其后面的原子开头,前面不能有任何东西
+		$		匹配字符串结尾的位置,限制必须以其前面的原子结束,后面不能有任何东西
+		\b		单词边界
+		\B		非单词边界
+		()		把括号里面的正常表达匹配的结果当作一个原子来看,起到分组的效果,
+				分组后可以通过反向引用来取得分组后的值,反向引用从$1开始
+	*/
+	var str = 'a you have a basketball and a dog'
+	console.log(str.replace(/a/g,'*'))//输出结果  * you h*ve * b*sketb*ll *nd * dog
+	console.log(str.replace(/\ba\b/g,'*'))// * you have * basketball and * dog
+	console.log(str.replace(/\Ba\B/g,'*')) //a you h*ve a b*sketb*ll and a dog
+
+	//通过分组 改变日期  2020-08-18
+	var str1 = '2020-08-18'
+	console.log(str1.replace(/(\d{4})-(\d{2})-(\d{2})/g,'$2/$3/$1'))//输出结果 08/18/2020
+
+
+</script>
+</html>

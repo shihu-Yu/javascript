@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>邮箱检验</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">邮箱检验</button>
+</body>
+<script type="text/javascript">
+	var txt = document.getElementById('txt')
+	var btn = document.getElementById('btn')
+	//1832237525@qq.com
+	//mah481655@gmail.com
+	var reg = /^\w+@\w+\.[a-z]{1,5}$/
+	
+	btn.onclick = function(){
+		var str = txt.value
+		if(reg.test(str)){
+			alert('合法')
+		}else{
+			alert('不合法')
+		}
+	}
+
+
+</script>
+</html>

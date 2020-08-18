@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>正则对象的方法exec</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//reg.exec(str) 方法对字符串执行搜索,并更新正则对象上的lastIndex属性,如果没有匹配的返回null,有的话返回一个数组.
+
+	/*
+	返回数组说明:
+
+	数组的第0个元素是匹配的内容,如果有分组,从下标是1开始是对应分组的内容
+
+	index是匹配内容第一个字符的位置
+
+	input 是被搜索的字符串
+
+	groups 存放着每个命名分组的名称以及它们匹配到的值,如果没有命名分组则为undefined,命名捕获分组自身的语法是 (?<name>...)，比普通的分组多了一个 ?<name>
+
+	*/
+	//在全局匹配下  
+	var str = 'a2020-08-18b'
+	var reg = /\d{4}-\d{2}-\d{2}/g
+	console.log(reg.lastIndex)//0
+	console.log(reg.exec(str))//["2020-08-18", index: 1, input: "a2020-08-18b", groups: undefined]
+	console.log(reg.lastIndex)//11
+	console.log(reg.exec(str))//null
+	console.log(reg.lastIndex)//0
+	console.log(reg.exec(str))//["2020-08-18", index: 1, input: "a2020-08-18b", groups: undefined]
+
+	//在非全局匹配下
+	var reg = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+	var str = 'a2018-05-10b';
+	console.log(reg.lastIndex);//0
+	console.log(reg.exec(str));//["2018-05-10", "2018", "05", "10", index: 1, input: "a2018-05-10b", groups: {year: "2018", month: "05", day: "10"}]
+	console.log(reg.lastIndex);//0
+	console.log(reg.exec(str));// ["2018-05-10", "2018", "05", "10", index: 1, input: "a2018-05-10b", groups: {year: "2018", month: "05", day: "10"}]
+	console.log(reg.lastIndex);//0
+	console.log(reg.exec(str));//["2018-05-10", "2018", "05", "10", index: 1, input: "a2018-05-10b", groups: {year: "2018", month: "05", day: "10"}]
+</script>
+</html>

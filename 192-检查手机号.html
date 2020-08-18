@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>检查手机号</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">检查手机号</button>
+</body>
+<script type="text/javascript">
+	var txt = document.getElementById('txt')
+	var btn = document.getElementById('btn')
+	var reg = /^1[35789]\d{9}$/g
+	btn.onclick = function(){
+		var str = txt.value
+		if(reg.test(str)){
+			alert('合法')
+		}else{
+			alert('不合法')
+		}
+	}
+
+
+</script>
+</html>

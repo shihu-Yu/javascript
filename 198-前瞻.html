@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>前瞻</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	 前瞻 正则从文本头部向文本尾部解析,文本尾部成为前,前瞻就是向前(文本尾部)检查是否符合断言(正则规则)
+	*/
+	//正向前瞻 exp(?=assert) 匹配到exp的内容后再看前面的内容符合不符合assert(正则规则),符合的话就匹配exp的内容
+	var str = 'a1b2c3d#e&'
+	console.log(str.replace(/[a-z](?=\d)/g,'$'))//输出结果 $1$2$3d#e&
+
+	//负向前瞻 exp(?!assert) 匹配到exp的内容后再看前面的内容符合不符合assert(正则规则),不符合的话就匹配exp的内容
+	console.log(str.replace(/[a-z](?!\d)/g,'$'))//输出结果 a1b2c3$#$&
+</script>
+</html>

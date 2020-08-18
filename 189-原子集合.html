@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>原子集合</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	原子集合	作用
+	.		除了回车和换行外的任意字符 等价[^\r\n]
+	\d		任意数字,等价[0-9]
+	\D		任意非数字 等价[^0-9]
+	\w		任意数字,字母,下划线 等价[0-9a-zA-Z_]
+	\W		任意非数字,字母,下划线 等价[^0-9a-zA-Z_]
+	\s		空白符 等价于[\t\n\f\r]
+	\S		非空白符 等价于[^\t\n\f\r]
+	*/
+	var str = `_zcv 123 zdfsa@@  126$dfd 
+	sk#`
+	var reg = /./g
+	var	reg1 = /\d/g
+	var reg2 = /\D/g
+	var reg3 = /\w/g
+	var reg4 = /\W/g
+	var reg5 = /\s/g
+	var reg6 = /\S/g
+
+	console.log(str)
+	console.log(str.replace(reg,'*'))
+	console.log(str.replace(reg1,'*'))
+	console.log(str.replace(reg2,'*'))
+	console.log(str.replace(reg3,'*'))
+	console.log(str.replace(reg4,'*'))
+	console.log(str.replace(reg5,'*'))
+	console.log(str.replace(reg6,'*'))
+</script>
+</html>

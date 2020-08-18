@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>原子</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+	/*
+	字母和数字字符	自身
+	\uxxxx	由十六进制数xxxx指定的Unicode字符
+	\n	换行
+	\r	回车
+	\t	制表符
+	\v	垂直制表符
+	\f	换页符
+
+	*/
+	var str = `xixixi  have 300$ 
+	hahahaha`
+	var reg1 = /ha/g
+	var reg2 = /\n/g
+	var reg3 = /\$/g
+	console.log(str.replace(reg1,'hei'))
+	console.log(str.replace(reg2,'*'))
+	console.log(str.replace(reg3,'*'))
+	/*(   ^ $ . * + ? = !  : |  \  / ( )  [ ] { }     )
+	以下标点符号在正则中具有特殊含义,如果要使用原本的标点符号意思,需要在前面添加\来转义
+
+	*/
+</script>
+</html>

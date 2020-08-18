@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>常用量词</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	量词		作用
+	{n}		前面原子恰好出现n次
+	{n,}	前面原子最少出现n次
+	{n,m}	前面原子最少出现n次,最多出现m次
+	+		前面原子最少出现1次 等价{1,}
+	?		前面原子最少出现0次,最多出现1次 等价{0,1}
+	*		前面原子最少出现0次,等价{0,}
+
+	*/
+	var str = 'avsa 123 58 agfg 1569'
+	
+	console.log(str)// avsa 123 58 agfg 1569
+	console.log(str.replace(/\d{2}/g,'*'))//输出结果 avsa *3 * agfg **
+	console.log(str.replace(/\d{2,}/g,'*'))//  avsa * * agfg *
+	console.log(str.replace(/\d{2,3}/g,'*'))//  avsa * * agfg *9
+	console.log(str.replace(/\d{3,4}/g,'*'))//	avsa * 58 agfg *
+	console.log(str.replace(/\d+/g,'*'))// avsa * * agfg *
+	console.log(str.replace(/\d?/g,'*'))// *a*v*s*a* **** *** *a*g*f*g* *****
+	console.log(str.replace(/\d*/g,'*'))// *a*v*s*a* ** ** *a*g*f*g* **
+
+
+
+</script>
+</html>

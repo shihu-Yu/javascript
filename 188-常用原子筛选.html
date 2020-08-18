@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>常用原子筛选</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	|	竖线两边任意匹配
+	[]	括号中任意一个原子,可以写区间(闭区间),如[a-z0-9]
+	[^]	括号中任意一个原子之外的原子
+
+
+
+	//过滤多个关键字:
+	str.replace(/淘宝|京东/g,'*')
+	//匹配汉字并且获取长度:
+	str.replace(/[\u4e00-\u9fa5]/g,'bb').length
+	//过滤HTML标签:
+	str.replace(/<[^<>]+>/g,'*')
+	*/
+	var str = '大鱼的翅膀已经太辽阔，heiheihei hahaxixixi'
+
+	var reg1 = /[\u4e00-\u9fa5]/g
+
+	
+	
+	console.log(str.replace(reg1,'*'))
+	console.log(str.replace(/[\u4e00-\u9fa5]/g,'**').length)//输出结果41 一个汉字占两个英文字符
+	console.log(str.replace(/[^\u4e00-\u9fa5]/g,'*'))
+</script>
+</html>

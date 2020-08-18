@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>创建正则对象</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	第一种 构造函数创建
+
+	new RegExp(规则,修正模式) 
+
+	*/
+	var str = 'xixixi hahahaha'
+	var reg = new RegExp('x','g')
+	var a = str.replace(reg,'*')
+	console.log(a)
+
+	/*
+	第二种 字面量创建
+
+	new reg =  /规则/修正模式 
+
+	*/
+
+	var reg2 = /h/g
+	
+	var b = str.replace(reg2,'*')
+	console.log(b)
+
+</script>
+</html>
