@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>表单的提交和重置</title>
+</head>
+<body>
+	<form action="http:www.baidu.com" id="form1" >
+		<input type="text" name="username">
+		<input type="password" name="password">
+		<textarea cols="30" rows="10" name="txt"></textarea>
+		<!-- <input type="submit"> -->
+		<!-- <input type="image" name=""> -->
+		<button type="submit" id="btn">提交</button>
+	</form>
+</body>
+<script type="text/javascript">
+	//表单的提交  HTML按钮默认提交
+	/* 
+	<form action="http://www.chenniantao.com">
+    	<input type="submit"/>
+	</form>
+	*/
+	//2.使用image 
+	/*
+	<form action="http://www.chenniantao.com">
+    	<input type="image" />
+	</form>
+	*/
+	var form = document.forms[0]
+	var btn = document.getElementById('btn')
+	btn.onclick = function(ev){//点击HTML按钮提交表单是这些按钮的默认行为,如果想阻止提交的话,可以监听他们的点击事件,然后阻止默认行为
+		console.log(111)
+		ev.preventDefault()//阻止提交默认行为
+	}
+	//3.form的submit()方法提交
+	/*
+		form.submit()
+	*/
+</script>
+</html>

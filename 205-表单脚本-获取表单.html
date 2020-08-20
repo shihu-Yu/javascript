@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>表单脚本-获取表单</title>
+</head>
+<body>
+	<form action="http:www.baidu.com" id="form1" name="form1">
+		<input type="text">
+	</form>
+	<form action="http:www.baidu.com" id="form2" name="form2">
+		<input type="text">
+	</form>
+	<form action="http:www.baidu.com" id="form3" name="form3">
+		<input type="text">
+	</form>
+</body>
+<script type="text/javascript">
+	//方式一 和获取普通元素方法一样
+
+	/*
+	var form1 = document.getElementById('form1')
+	console.log(form1)
+	*/
+
+	//方法二 通过document.forms获取
+	//document.forms代表页面所有的表单集合,在这个集合中通过数值索引或者name值来获取特定的表单
+	console.log(document.forms)//返回的是一个表单集合
+
+	var form1 = document.forms[0]
+	console.log(form1)
+	var form2 = document.forms[1]
+	console.log(form2)
+	var form3 = document.forms["form3"]
+	console.log(form3)
+	var form4 = document.forms.form3//输出结果与上面的一样
+	console.log(form4)
+</script>
+</html>

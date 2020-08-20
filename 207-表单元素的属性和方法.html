@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>表单元素的属性和方法</title>
+</head>
+<body>
+	<form action="http:www.baidu.com" id="form1" >
+		<input type="text" name="username">
+		<input type="password" name="password">
+		<textarea cols="30" rows="10" name="txt"></textarea>
+		<input type="checkbox" name="ckb">
+		<input type="checkbox" name="ckb">
+		<input type="radio" name="rd">
+		<input type="radio" name="rd">
+		<select name="sl">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+		</select>
+		<input type="submit" name="sub">
+	</form>
+</body>
+<script type="text/javascript">
+	var form1 = document.forms[0]
+	//	表单元素.disabled = true; 值为true表示禁用表单元素 针对所有表单元素 值不会被提交
+	form1.elements.password.disabled = true
+
+	// 表单元素.readOnly = true;
+	/*
+	1.值为true表示禁用表单元素
+	2.只针对input(text/password)/textarea
+	3.值会被提交								
+	*/
+	form1.elements.username.readOnly = true
+
+	//checked	值为true表示选中复选框或者单选框选
+	form1.elements.ckb[0].checked = true
+	form1.elements.rd[0].checked = true
+
+	//selected	值为true表示选中下拉框
+
+	form1.elements.sl.options[1].selected = true//此时默认选中的为第二个元素
+
+	//2. 表单元素的方法
+	form1.elements.txt.focus()//设置焦点
+	form1.elements.txt.blur()//移除焦点
+</script>
+</html>
