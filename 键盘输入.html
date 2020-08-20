@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘输入</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function GetInput(){//屏蔽非数字和非退格符
+    var k = event.keyCode;   //48-57是大键盘的数字键，96-105是小键盘的数字键，8是退格符←
+    if ((k <= 57 && k >= 48) || (k <= 105 && k >= 96) || (k== 8)){
+     return true;
+    } else {
+     return false;
+    }
+}
+    function Set(obj){
+   //即时处理输入框的内容,比如进行某些运算
+}
+</script>
+</html>
