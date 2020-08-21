@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        body{
+            height: 3000px;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    function debounce(fn,delay){
+        var timer = 0
+        return function(){
+            if(timer){
+                clearTimeout(timer)
+            }
+            timer = setTimeout(fn,delay)
+        }
+    }
+    var i = 0
+    var fn = debounce(function(){
+         console.log("第"+(++i)+"次触发事件")
+}, 1000)
+    document.addEventListener('scroll',fn,false)
+</script>
+</html>

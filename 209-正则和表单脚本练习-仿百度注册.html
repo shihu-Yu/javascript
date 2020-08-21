@@ -233,7 +233,7 @@
     <div class="top-wrap"></div>
     <div class="main">
         <div class="reg" id='reg'>
-            <form action="https://www.kuazhu.com">
+            <form action="https://www.baidu.com">
                 <div id="username-wrap">
                     <label for="username">用户名</label>
                     <input type="text"  autocomplete="off" name="username" placeholder="请设置用户名">
@@ -304,15 +304,23 @@
 	var cancelIcons = document.querySelectorAll('.cancel')
     var pwdChecklist = document.querySelector('.pwd-checklist')
     var checklistItems = document.querySelectorAll('.pwd-checklist-item')
-    
+    var smsBtn = document.getElementById('smsBtn')
+    var subBtn = document.getElementById('subBtn')
+
     var phoneElem = form.phone
     var passwordElem = form.password
+    var verifyElem = form.verify
+    var isAgreeElem = form.isAgree
+    //定义验证结果
+    var isPhoneOk = false,isUsernameOk = false,isPwdOk = false,isVerifyOk = false
 
-
+    //调用函数
 	init()
 	checkUsername()
     checkPhone()
     checkPassword()
+    checkVerify()
+    handleSubmit()
 	//初始化
 	function init(){
 		usernameElem.focus()
@@ -349,22 +357,28 @@
 			var reg2 = /^\d+$/ 
 			if(val == ''){
 				msgesElem.className = 'msg'
+                //针对手动将已有的内容清空时,如上一次是错误的处理
+                this.className = ''
+                isUsernameOk = false
 			}
 			//输入全空时
 			else if(reg.test(val)){
 				setErr(msgesElem,'请输入用户名',this)
-				
+				isUsernameOk = false
 			}
 			//长度验证 用户名不能超过7个汉字或14个字符
 			else if (getLen(val) > 14){
 				setErr(msgesElem,'用户名不能超过7个汉字或14个字符',this)
+                isUsernameOk = false
 			}
 			//用户名仅支持英文下划线
 			else if(reg1.test(val) || reg2.test(val)){
 				setErr(msgesElem,'用户名仅支持中英文、数字和下划线,且不能为纯数字',this)
+                isUsernameOk = false
 			}
 			else{
-				setOk(msgesElem,'this')
+				setOk(msgesElem,this)
+                isUsernameOk = true
 			}
 		}
 		usernameElem.onfocus = function(){
@@ -380,27 +394,26 @@
 		phoneElem.onblur = function(){
 			var val = this.value
 			var reg = /^\s+$/
-			var reg1 = /^\s$/
-            var reg2 = /^1[35789]\d{9}$/
+            var reg1 = /^1[35789]\d{9}$/
             
 			if(val == ''){
 				msgesElem.className = 'msg'
+                this.className = ''
+                isPhoneOk = false
 			}
 			//输入全空时
 			else if(reg.test(val)){
 				setErr(msgesElem,'请输入手机号',this)
-				
+				isPhoneOk = false
 			}
 			//手机号码格式验证
-			else if (reg1.test(val)){
+			else if (!reg1.test(val)){
 				setErr(msgesElem,'手机号格式不正确',this)
+                isPhoneOk = false
 			}
-            //只能输入11位的数字
-            else if(!reg2.test(val)){
-                setErr(msgesElem,'手机号格式不正确',this)
-            }
 			else{
-				setOk(msgesElem,'this')
+				setOk(msgesElem,this)
+                isPhoneOk = true
 			}
             
 		}
@@ -419,37 +432,63 @@
     //验证密码
     function checkPassword(){
         var msgesElem = msges[2]
-        var checkSuccessClass = '  pwd-checklist-item pwd-checklist-item-success'
+        var checkSuccessClass = ' pwd-checklist-item pwd-checklist-item-success'
         var checkErrClass = ' pwd-checklist-item pwd-checklist-item-error'
-		passwordElem.onblur = function(){
-			
-		}
+        var reg = /^.{8,14}$/
+        var reg1 = /[^\da-zA-Z@#\*]/
+        var reg2 = /\s/
+        var isCheckOk1 = false, isCheckOk2 = false ,isCheckOk3 = false
         passwordElem.oninput = function(){
-           
-            var val = this.value
-            var len = val.replace(/[\u4e00-\u9fa5]/g,'**').length
-            var reg = /[^a-zA-Z\d\.@#]/
-            var reg1 = /\s/
-            if(len <8 || len > 14){
+           var val = this.value
+            if(!reg.test(val)){
                 checklistItems[0].className = checkErrClass
-            }else{
+                isCheckOk1 = false
+            }else {
                 checklistItems[0].className = checkSuccessClass
+                isCheckOk1 = true
             }
             //支持数字，大小写字母 ，符号   正则为/[^a-zA-Z\d\.@#]/ 
-            if(reg.test(val)){
+            if(reg1.test(val)){
                 checklistItems[1].className = checkErrClass
+                isCheckOk2 = false
             }else{
                 checklistItems[1].className = checkSuccessClass
+                isCheckOk2 = true
             }
             //不允许有空格
-            if(reg1.test(val)){
+            if(reg2.test(val)){
                 checklistItems[2].className = checkErrClass
+                isCheckOk3 = false
             }else{
                 checklistItems[2].className = checkSuccessClass
+                isCheckOk3 = true
             }
         }
+        //密码取消时的特殊处理
+        cancelIcons[2].onclick = function(ev){
+            isCheckOk1 = false
+            isCheckOk2 = false
+            isCheckOk3 = false
+            checklistItems[0].className = 'pwd-checklist-item'
+            checklistItems[1].className = 'pwd-checklist-item'
+            checklistItems[2].className = 'pwd-checklist-item'
+        }
         passwordElem.onblur = function(){
-            pwdChecklist.style.display = 'none'
+            
+            if(this.value == ''){
+            	pwdChecklist.style.display = 'none'
+            	this.className = ''
+                isPwdOk = false
+            }
+            else if(isCheckOk1 && isCheckOk2 && isCheckOk3){
+            	setOk(msgesElem,this)
+                pwdChecklist.style.display = 'none'
+                isPwdOk = true  
+            }
+            else{
+            	this.className = 'input-err' 
+                isPwdOk = false
+            }
         }
 		passwordElem.onfocus = function(){
 			msgesElem.className = 'msg'
@@ -458,6 +497,87 @@
 	}
 
     //验证验证码
+     function checkVerify(){
+        var msgesElem = msges[3]
+        smsBtn.onclick = function(){
+            var phoneVal = phoneElem.value
+            if(phoneVal == ''){
+               setErr(msges[1],'请输入手机号',phoneElem)
+                return false
+            }
+            if(isPhoneOk){
+                alert('为手机号:'+phoneVal+'发送验证码请求')
+            }
+        }
+        verifyElem.onblur = function(){
+            var val = this.value
+            var reg = /^\s+$/
+            var reg1 = /^\d{6}$/
+            if(val == ''){
+                msgesElem.className = 'msg'
+                this.className = ''
+                 isVerifyOk = false
+            }
+            //输入全空时
+            else if(reg.test(val)){
+                setErr(msgesElem,'请输入验证码',this)
+                 isVerifyOk = false
+            }
+            //验证码格式验证
+            else if (!reg1.test(val)){
+                setErr(msgesElem,'验证码格式不正确',this)
+                 isVerifyOk = false
+            }
+            //成功
+            else{
+                setOk(msgesElem,this)
+                 isVerifyOk = true
+            }
+            
+        }
+        //输入限制,只能输入6位数的数字验证码
+        verifyElem.onkeydown = function(ev){
+            var keyCode = ev.keyCode
+            if((keyCode < 48 || keyCode > 57 || this.value.length>5) && keyCode != 8 && keyCode != 37 && keyCode != 39){
+            ev.preventDefault()
+        }
+    }
+        verifyElem.onfocus = function(){
+            msgesElem.className = 'msg'
+        }
+    }
+
+     //提交注册
+     function handleSubmit(){
+        subBtn.onclick = function(){
+            if(usernameElem.value == ''){
+                
+                setErr(msges[0],'请输入用户名',usernameElem)
+            }
+            if(phoneElem.value == ''){
+                
+                setErr(msges[1],'请输入手机号',phoneElem)
+            }
+            if(passwordElem.value == ''){
+            
+                setErr(msges[2],'请输入密码',passwordElem)
+            }
+            if(verifyElem.value == ''){
+                
+                setErr(msges[3],'请输入验证码',verifyElem)
+            }
+            if(isAgreeElem.checked){
+               
+                msges[4].style.display = 'none'
+            }else{
+                msges[4].style.display = 'inline'
+            }
+            
+            if(isUsernameOk && isPhoneOk && isPwdOk && isVerifyOk && isAgreeElem.checked){
+                form.submit()
+            }
+        }
+    }
 
 </script>
 </html>
