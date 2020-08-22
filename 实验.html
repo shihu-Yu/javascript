@@ -1,32 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title></title>
-    <style type="text/css">
-        body{
-            height: 3000px;
-            overflow: scroll;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>惰性登录框</title>
+
 </head>
 <body>
 
 </body>
 <script type="text/javascript">
-    function debounce(fn,delay){
-        var timer = 0
-        return function(){
-            if(timer){
-                clearTimeout(timer)
-            }
-            timer = setTimeout(fn,delay)
+    (function(w){
+        function Local(name){ 
+            this.inputElem = null;
+            this.init(name);
+            this.foreigns = [];
+            this.bindEvent();
         }
-    }
-    var i = 0
-    var fn = debounce(function(){
-         console.log("第"+(++i)+"次触发事件")
-}, 1000)
-    document.addEventListener('scroll',fn,false)
+        Local.prototype = {
+            constructor:Local,
+            init:function(name){
+                var pElem = document.createElement('p')
+                pElem.innerHTML = name + ' : '
+                this.inputElem = document.createElement('input')
+                pElem.appendChild(this.inputElem)
+                document.body.appendChild(pElem)
+            },
+            register:function(foreign){
+                this.foreigns.push(foreign)
+            },
+            publish:function(){
+                for(var i=0,len=this.foreigns.length;i<len;i++){
+                    this.foreigns[i].listen(this.inputElem.value)
+                }
+            },
+            bindEvent:function(){
+                this.inputElem.oninput = function(){
+                    this.publish()
+                }.bind(this);
+            }
+        }
+        w.Local = Local
+    })(window);
+
+    (function(w){
+        function Foreign(name,rate,local){ 
+            this.name = name
+            this.rate = rate
+            this.spanElem = null;
+            local.register(this)
+            this.init()
+        }
+        Foreign.prototype = {
+            constructor:Foreign,
+            init:function(name){
+                var pElem = document.createElement('p')
+                pElem.innerHTML = this.name + ' : '
+                this.spanElem = document.createElement('span')
+                pElem.appendChild(this.spanElem)
+                document.body.appendChild(pElem)
+            },
+            listen:function(val){
+                this.spanElem.innerHTML = val / this.rate
+            }
+        }
+        w.Foreign = Foreign
+    })(window);
+
+
+
+
+var cny = new Local('人民币cny');  
+var usd = new Foreign('美元usd',8,cny);
+var jpy = new Foreign('日元jpy',0.06,cny);
 </script>
 </html>
