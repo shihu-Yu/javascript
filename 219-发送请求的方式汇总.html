@@ -1,9 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta>
 	<title>发送请求方式的汇总</title>
 </head>
 <body>
+	<!-- 1.   直接输入一个请求地址 -->
 
+
+	<!-- 2. 用a标签 -->
+	<div>
+		<a href="http://127.0.0.1:3000/217-Ajax.html">a链接</a>
+	</div>
+
+	<!-- 使用form表单 -->
+	<div>
+		<form action="http://127.0.0.1:3000/217-Ajax.html" method="get">
+		 	<input type="text" name = "username">
+		 	<input type="text" age="age">
+	        <input type="submit" value="提交">
+    	</form>
+    </div>
+	<!-- JS修改location属性 -->
+	<div>
+    	<button  id=btn>点击</button>
+    </div>
+
+    <div>
+    	<button  id=btn1>go</button>
+    </div>
 </body>
+<script>
+	// JS修改location属性  在JS中通过给window.location属性指定一个地址来发送请求,该方法发送的是GET请求
+	var btn =document.getElementById('btn')
+	btn.onclick = function(){
+		window.location = 'http://127.0.0.1:3000/217-Ajax.html'
+	}
+
+	// 利用ajax异步发送请求，比如前面的案例
+
+// 	btn1.onclick = function(){
+//     ajax({
+//         method:'GET',
+//         url:'http://127.0.0.1:3000',
+//         data:{name:"Tom",age:18,city:"北京"},
+//         success:function(data){
+//             console.log(data)
+//         }
+//     })       
+// }
+</script>
 </html>
