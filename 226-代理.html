@@ -1,1 +1,26 @@
-226-代理.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>代理</title>
+</head>
+<body>
+	<button id="btn">Ajax获取数据</button>
+</body>
+<script src="222-ajax.js"></script>
+<script type="text/javascript">
+	
+
+	var btn = document.getElementById('btn');
+	btn.onclick = function(){
+	    ajax({
+	    	method:'POST',
+	    	url:'http://127.0.0.1:3001/addData',
+	    	data:{
+	    		name:'李雷'
+	    	}
+	    })
+}
+</script>
+</html>
