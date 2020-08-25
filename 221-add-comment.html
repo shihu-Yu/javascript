@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>模拟添加评论</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		#wrap{
+			width: 500px;
+			margin:50px auto;
+		}
+        #contents{
+            list-style: none;
+            margin-top: 10px;
+
+        }
+        #contents li{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            line-height: 40px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .del-btn{
+            cursor: pointer;
+            color: red;
+        }
+	</style>
+</head>
+<body>
+	<div id="wrap">
+        <div>
+    		<textarea  id="text" cols="30" rows="10"></textarea>
+    		<button id="btn">添加评论</button>
+        </div>
+		<ul id="contents">
+			<li>
+                      
+            </li>
+		</ul>
+	</div>
+</body>
+<script src="221-ajax.js"></script>
+<script type="text/javascript">
+    var btn = document.getElementById('btn')
+    var text = document.getElementById('text')
+    var contents = document.getElementById('contents')
+    
+    btn.onclick = function (){
+        var val = text.value
+        ajax({
+            method:'POST',
+            url:'http://127.0.0.1:3000/addComment',
+            data:{
+                comment:val
+            },
+            success:function(data){
+                if(data.code ==0){
+                    var elemLi = document.createElement('li')
+                    var elemSpan = document.createElement('span')
+                    elemSpan.innerHTML = val
+                    elemLi.appendChild(elemSpan)
+                    var spanBtn = document.createElement('span')
+                    spanBtn.innerHTML = '删除'
+                    spanBtn.className = 'del-btn'
+                    elemLi.appendChild(spanBtn)
+                    contents.insertBefore(elemLi,contents.firstChild)
+                    text.value = ''
+                }
+
+            }
+        })
+    }
+     contents.onclick = function(ev){
+        if(ev.target.className == 'del-btn'){
+
+            ajax({
+                url:'http://127.0.0.1:3000/delComment',
+                data:{
+                    id:147258369
+                },
+                success:function(data){
+                    if(data.code == 0){
+                        this.removeChild(ev.target.parentNode)        
+                    }
+                }.bind(this)
+            })
+        }
+    }
+</script>
+</html>

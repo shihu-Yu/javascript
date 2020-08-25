@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JSONP</title>
+</head>
+<body>
+	<button id="btn">请求</button>
+</body>
+<script>
+	function handleCallback(obj){
+		console.log(obj)
+	}
+</script>
+<script type="text/javascript">
+	
+	var btn = document.getElementById('btn');
+	btn.onclick = function(){
+	    var script = document.createElement('script')
+	    //1.由于<script>元素的src属性中URL可以跨域访问,所以这里没有跨域的问题
+	    //2.参数名callback需要和后台协商统一,因为后台会根据这个名字获取回调函数的名字
+	    //3.参数callback的值为自己定义的函数名,用来接收数据
+	    //4.src属性中URL请求的结果实际上是一段调用函数handleCallback的JS代码
+	    script.src = 'http://127.0.0.1:3001/?callback=handleCallback'
+	    document.body.appendChild(script)
+}
+</script>
+</html>

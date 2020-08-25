@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>模拟注册用户名是否存在</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		span{
+			font-size: 20px;
+			margin-right: 10px;
+		}
+		input{
+			font-size: 20px;
+		}
+		.wrap{
+			width: 400px;
+			margin:50px auto;
+		}
+		.msg{
+			color: red;
+			
+		}
+		.err-input{
+			border-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div>
+			<span>用户名</span><input type="text" id="username" >
+		</div>
+		<p class="msg"  style="display: none ">此用户名太受欢迎请换一个</p>
+		<div>
+			<span>手机号</span><input type="text" id="phone">
+		</div>
+	</div>
+</body>
+<script src="./220-ajax.js"></script>
+<script>
+	var elem = document.getElementById('username')
+	var msgElem = document.querySelector('.msg')
+	console.log(msgElem)
+	elem.onblur = function(){
+		var val = this.value
+		if(val){
+			ajax({
+				url:'http://127.0.0.1:3000/checkusername',
+				data:{
+					username:val
+				},
+
+				success:function(data){
+					var exist = data.data.exist
+					if(exist == 1){
+						elem.className = 'err-input'
+						msgElem.style.display = 'block'
+					}
+				}
+			})
+		}
+	}
+	elem.onfocus = function(){
+		elem.className = ''
+		msgElem.style.display = 'none'
+	} 
+</script>
+</html>
