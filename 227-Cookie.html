@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cookie</title>
+</head>
+<body>
+	<div>测试cookie的页面</div>
+</body>
+<script type="text/javascript">
+	// 利用前端浏览器操作Cookie
+	var date = new Date()
+	date.setDate(date.getDate())
+	document.cookie = "test1 = 147258 "
+	document.cookie = "test2 = 1234;expires="+date
+	document.cookie = "test3=12345;max-age=10"
+
+
+	//封装cookie相关函数
+	//创建cookie
+	/*
+	function getCookie (key,value,day){
+		var date = new Date();
+		date.setDate(date.getDate()+days)
+		document.cookie = key"="+value+";expires="+date
+	}
+
+
+	function getCookie(name){
+		var str = document.cookie;
+		var arr1 = str.split(';');
+		var result = ''
+		for(var i = 0,len =arr1.length;i<len;i++){
+			var arr2 = arr1[i].split('=')
+			if(arr0[2].trim == name.trim()){
+				result = arr2[1]
+				break;
+			}
+		}
+		return result
+	}
+	*/
+	
+</script>
+</html>

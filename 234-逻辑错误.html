@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>逻辑错误</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">执行</button>
+</body>
+<script>
+	//该程序是 输入一个数字 然后从一加到这个数字再乘以十 最后输出结果
+	var text = document.getElementById('txt')
+	var btn = document.getElementById('btn')
+	btn.onclick = function (){
+		debugger
+		var val = text.value
+			try{
+				if(isNaN(parseInt(val))){
+					throw new Error('not parse to a number')
+				}
+				var total = sum(parseInt(val));
+				handleNum(total)
+			}catch(e){
+				console.log(e)
+			}finally{
+				console.log('finally...')
+		}
+		function sum(num){
+			var result = 0
+			for(var i = 0;i<val;i++){
+				result += i
+			}
+			return result
+		}
+		function handleNum(num){
+			console.log(num*10)
+		}
+	}
+</script>
+</html>

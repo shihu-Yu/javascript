@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>异常处理</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//语法格式
+	/*
+	try{
+    	...//有可能出现异常的代码
+	}catch(e){
+	    ...//当发生异常时的处理代码
+	}finally{
+	    ...//不管有没有异常都会处理的代码,例如清理工作
+	}
+*/
+
+	var json = {age:20}
+	// var json = '{"age":"21"}'这个时正常的
+	//console.log(JSON.parse(json))//当传入的是第一个的json时这里会报错
+	try{
+		var obj = {} 
+		console.log(JSON.parse(json))
+	}catch(e){
+		console.log(e)//输出错误
+		console.log(obj)
+	}finally{
+		console.log('finally do ...')
+	}
+	console.log('do something...')
+</script>
+</html>

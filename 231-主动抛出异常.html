@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>主动抛出异常</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function sum(n1,n2){
+		var n1 = parseInt(n1)
+		var n2 = parseInt(n2)
+		if(isNaN(n1) || isNaN(n2)){
+			throw new Error('arguments must be number ')//没有这句代码下面不会报错
+		}
+		return n1+n2
+	}
+	// var s = sum('a','c')//输出结果是报错
+	var s = sum('1','2')//输出结果为3
+	console.log(s)
+</script>
+</html>

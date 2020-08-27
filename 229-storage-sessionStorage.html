@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>sessionStorage</title>
+</head>
+<body>
+	
+</body>
+<script>
+	sessionStorage的  api 使用方法与localStorage的使用方法相同
+
+	//设置
+	sessionStorage.setItem('test',1234)
+	sessionStorage.setItem('test1',1234567)
+	//获取
+	console.log(sessionStorage.getItem('test'))//输出结果为1234
+
+	//删除
+	// sessionStorage.removeItem('test1')
+
+	//清除所有
+	// sessionStorage.clear()
+
+	//内容个数
+	console.log(sessionStorage.length)//输出结果为  2 
+
+	//获取Key的值
+	console.log(sessionStorage.key(0))//输出结果为  test
+	console.log(sessionStorage.key(1))//输出结果为  test1
+	
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>localStrorage</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//设置
+	localStorage.setItem('test',1234)
+	localStorage.setItem('test1',1234567)
+	localStorage.setItem('test2',{name:'lilei'})
+
+	var obj  ={name:'韩梅梅'}//只能存储字符串
+	localStorage.setItem('test3',JSON.stringify(obj))
+
+
+	//获取
+	console.log(localStorage.getItem('test'))//输出结果为1234
+
+	//删除
+	// localStorage.removeItem('test1')
+
+	//清除所有
+	// localStorage.clear()
+
+	//内容个数
+	console.log(localStorage.length)//输出结果为  2 
+
+	//获取Key的值
+	console.log(localStorage.key(0))//输出结果为  test
+	console.log(localStorage.key(1))//输出结果为  test1
+
+</script>
+</html>
